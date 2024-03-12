@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 2133990517}
   - component: {fileID: 2133990516}
   m_Layer: 0
-  m_Name: adventurer-air-attack2-00
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

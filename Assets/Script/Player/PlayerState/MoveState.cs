@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleState : PlayerGroundState
+public class MoveState : PlayerGroundState
 {
-    public IdleState(Player player, PlayerStateMachine stateMachine, Data playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+    public MoveState(Player player, PlayerStateMachine stateMachine, Data playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
 
@@ -21,9 +21,13 @@ public class IdleState : PlayerGroundState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if(inputX!=0)
+        
+        player.SetVelocityX(data.movementVelocity*inputX);
+        player.CheckFlip(inputX);
+
+        if (inputX == 0)
         {
-            player.stateMachine.ChangeState(player.moveState);
+            player.stateMachine.ChangeState(player.idleState);
         }
     }
 
