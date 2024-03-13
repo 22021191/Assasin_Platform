@@ -68,18 +68,19 @@ public class Player : MonoBehaviour
         stateMachine.CurrentState.PhysicsUpdate();
     }
     #region Set Function
-    public void SetVelocityX(float speed)
-    {
-        workSpace.Set(speed, curVerlocity.y);
-        _rb2d.velocity = workSpace;
-        curVerlocity = workSpace;
-    }
-
     public void SetVelocityY(float force)
     {
         workSpace.Set(curVerlocity.x, force);
         _rb2d.velocity = workSpace;
         curVerlocity = _rb2d.velocity;
+    }
+
+    public void SetVelocityX(float horizontalDirection)
+    {
+        _rb2d.AddForce(new Vector2(horizontalDirection, 0f) * data.acceleration);
+
+        if (Mathf.Abs(_rb2d.velocity.x) > data.maxSpeed)
+            _rb2d.velocity = new Vector2(Mathf.Sign(_rb2d.velocity.x) * data.maxSpeed, _rb2d.velocity.y);
     }
     #endregion
 

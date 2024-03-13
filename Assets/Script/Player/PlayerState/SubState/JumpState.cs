@@ -6,6 +6,7 @@ public class JumpState :PlayerState
 {
     private bool _OnGround;
     public bool doubleJump;
+
     public JumpState(Player player, PlayerStateMachine stateMachine, Data playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
@@ -30,6 +31,7 @@ public class JumpState :PlayerState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+        
         if(_OnGround&player._rb2d.velocity.y<0.1f) 
         {
             stateMachine.ChangeState(player.idleState);

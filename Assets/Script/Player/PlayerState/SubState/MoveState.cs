@@ -22,7 +22,7 @@ public class MoveState : PlayerGroundState
     {
         base.LogicUpdate();
         
-        player.SetVelocityX(data.movementVelocity*inputX);
+        player.SetVelocityX(inputX);
         player.CheckFlip(inputX);
 
         if (inputX == 0)
@@ -34,5 +34,6 @@ public class MoveState : PlayerGroundState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+        player._rb2d.drag = data._groundLinearDrag;
     }
 }

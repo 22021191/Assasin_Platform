@@ -5,8 +5,15 @@ using UnityEngine;
 public class PlayerGroundState : PlayerState
 {
     protected int inputX;
+    protected bool onGround;
     public PlayerGroundState(Player player, PlayerStateMachine stateMachine, Data playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
+    }
+
+    public override void DoChecks()
+    {
+        base.DoChecks();
+        onGround = player.GroundCheck();
     }
 
     public override void Enter()
@@ -28,6 +35,10 @@ public class PlayerGroundState : PlayerState
         if (player.input.jumpInput)
         {
             stateMachine.ChangeState(player.jumpState);
+        }else if(!onGround)
+        {
+            player.airState.StartCoyoteTime();
+            stateMachine.ChangeState(player.airState);
         }
 
     }
