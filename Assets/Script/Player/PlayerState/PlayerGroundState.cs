@@ -12,6 +12,7 @@ public class PlayerGroundState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        player.jumpState.doubleJump= true;
     }
 
     public override void Exit()
@@ -23,6 +24,12 @@ public class PlayerGroundState : PlayerState
     {
         base.LogicUpdate();
         inputX = player.input.inputX;
+
+        if (player.input.jumpInput)
+        {
+            stateMachine.ChangeState(player.jumpState);
+        }
+
     }
 
     public override void PhysicsUpdate()

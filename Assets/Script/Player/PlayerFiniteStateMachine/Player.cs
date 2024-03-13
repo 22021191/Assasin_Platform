@@ -9,12 +9,14 @@ public class Player : MonoBehaviour
 
     #region Value
     [Header("Component")]
-    [SerializeField] private Rigidbody2D _rb2d;
+    public Rigidbody2D _rb2d;
 
     [Header("Variable")]
-    private Vector2 workPlace;
+    private Vector2 workSpace;
     private Vector2 curVerlocity;
     [SerializeField] private int facingRight;
+    [SerializeField] private string changeAnimName;
+    [SerializeField] private GameObject groundCheck;
     public PlayerInput input;
     public Animator anim { get;private set; }
     #endregion
@@ -26,6 +28,9 @@ public class Player : MonoBehaviour
     [Header("Player State")]
     public IdleState idleState;
     public MoveState moveState;
+    public PlayerAirState airState;
+    public JumpState jumpState;
+    public LandState landState;
     #endregion
 
     private void Awake()
@@ -41,6 +46,9 @@ public class Player : MonoBehaviour
         //Khoi tao Player State
         idleState=new IdleState(this,stateMachine,data,"Idle");
         moveState = new MoveState(this, stateMachine, data, "Move");
+        airState = new PlayerAirState(this, stateMachine, data, "Jump");
+        jumpState = new JumpState(this, stateMachine, data, "Jump");
+        landState = new LandState(this, stateMachine, data, "Land");
     }
 
     void Start()
@@ -62,9 +70,16 @@ public class Player : MonoBehaviour
     #region Set Function
     public void SetVelocityX(float speed)
     {
-        workPlace.Set(speed, curVerlocity.y);
-        _rb2d.velocity = workPlace;
-        curVerlocity = workPlace;
+        workSpace.Set(speed, curVerlocity.y);
+        _rb2d.velocity = workSpace;
+        curVerlocity = workSpace;
+    }
+
+    public void SetVelocityY(float force)
+    {
+        workSpace.Set(curVerlocity.x, force);
+        _rb2d.velocity = workSpace;
+        curVerlocity = _rb2d.velocity;
     }
     #endregion
 
@@ -76,6 +91,11 @@ public class Player : MonoBehaviour
             Flip();
         }
     }
+
+    public bool GroundCheck()
+    {
+        return Physics2D.OverlapCircle(groundCheck.transform.position, data.groundRadius, data.groundMask);
+    }
     #endregion
 
     #region Other Functions
@@ -83,6 +103,15 @@ public class Player : MonoBehaviour
     {
         facingRight *= -1;
         transform.Rotate(0, 180, 0);
+    }
+
+    public void ChangeAnim(string AnimName)
+    {
+        if (changeAnimName == AnimName) return;
+
+        anim.ResetTrigger(AnimName);
+        changeAnimName = AnimName;
+        anim.SetTrigger(AnimName);
     }
     #endregion
 }

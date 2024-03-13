@@ -7,4 +7,11 @@ public class Data : ScriptableObject
 {
     [Header("Move State")]
     public float movementVelocity = 10f;
+
+    [Header("Jump State")]
+    public float jumpForce = 15f;
+
+    [Header("Collider Check")]
+    public float groundRadius;
+    public LayerMask groundMask;
 }

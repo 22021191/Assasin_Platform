@@ -21,13 +21,14 @@ public class PlayerState
 
     public virtual void Enter()
     {
-        player.anim.SetBool(animName, true);
+        DoChecks();
+        player.ChangeAnim(animName);
         startTime= Time.time;
     }
 
     public virtual void Exit()
     {
-        player.anim.SetBool(animName, false);
+
     }
 
     public virtual void LogicUpdate()
@@ -37,9 +38,11 @@ public class PlayerState
 
     public virtual void PhysicsUpdate()
     {
-        
+        DoChecks();
     }
 
+    public virtual void DoChecks() { }
 
+   
 
 }

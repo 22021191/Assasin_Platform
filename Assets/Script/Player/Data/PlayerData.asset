@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   movementVelocity: 10
+  jumpForce: 8
+  groundRadius: 0.1
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
