@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 8
   acceleration: 30
-  _groundLinearDrag: 7
+  _groundLinearDrag: 5
   jumpForce: 25
-  airLinearDrag: 5
+  airLinearDrag: 4
   fallMultiplier: 15
   jumpMultiplier: 5
   coyoteTime: 0.2
@@ -24,3 +24,8 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  standColliderHeight: 2
+  crouchColliderHeight: 1
+  dashSpeed: 15
+  dashLength: 0.3
+  dashCounter: 0.5

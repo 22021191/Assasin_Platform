@@ -10,13 +10,15 @@ public class Player : MonoBehaviour
     #region Value
     [Header("Component")]
     public Rigidbody2D _rb2d;
+    public CapsuleCollider2D collider;
 
     [Header("Variable")]
     private Vector2 workSpace;
     private Vector2 curVerlocity;
-    [SerializeField] private int facingRight;
     [SerializeField] private string changeAnimName;
     [SerializeField] private GameObject groundCheck;
+    [SerializeField] private GameObject topCheck;
+    public int facingRight;
     public PlayerInput input;
     public Animator anim { get;private set; }
     #endregion
@@ -31,6 +33,9 @@ public class Player : MonoBehaviour
     public PlayerAirState airState;
     public JumpState jumpState;
     public LandState landState;
+    public CrouchIdle crouchIdle;
+    public CrouchWalk crouchWalk;
+    public DashState dashState;
     #endregion
 
     private void Awake()
@@ -39,9 +44,10 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         _rb2d= GetComponent<Rigidbody2D>();
         input= GetComponent<PlayerInput>();
+        collider = GetComponent<CapsuleCollider2D>();
 
         //Khoi tao StateMachine
-        stateMachine=new PlayerStateMachine();
+        stateMachine =new PlayerStateMachine();
 
         //Khoi tao Player State
         idleState=new IdleState(this,stateMachine,data,"Idle");
@@ -49,6 +55,9 @@ public class Player : MonoBehaviour
         airState = new PlayerAirState(this, stateMachine, data, "Jump");
         jumpState = new JumpState(this, stateMachine, data, "Jump");
         landState = new LandState(this, stateMachine, data, "Land");
+        crouchIdle = new CrouchIdle(this, stateMachine, data, "CrouchIdle");
+        crouchWalk = new CrouchWalk(this, stateMachine, data, "CrouchWalk");
+        dashState = new DashState(this, stateMachine, data, "Dash");
     }
 
     void Start()
@@ -82,6 +91,17 @@ public class Player : MonoBehaviour
         if (Mathf.Abs(_rb2d.velocity.x) > data.maxSpeed)
             _rb2d.velocity = new Vector2(Mathf.Sign(_rb2d.velocity.x) * data.maxSpeed, _rb2d.velocity.y);
     }
+
+    public void SetColliderHeight(float height)
+    {
+        Vector2 center = collider.offset;
+        workSpace.Set(collider.size.x, height);
+
+        center.y += (height - collider.size.y) / 2;
+
+        collider.size = workSpace;
+        collider.offset = center;
+    }
     #endregion
 
     #region Check Functions
@@ -96,6 +116,11 @@ public class Player : MonoBehaviour
     public bool GroundCheck()
     {
         return Physics2D.OverlapCircle(groundCheck.transform.position, data.groundRadius, data.groundMask);
+    }
+
+    public bool TopCheck()
+    {
+        return Physics2D.OverlapCircle(topCheck.transform.position, data.groundRadius, data.groundMask);
     }
     #endregion
 

@@ -22,4 +22,14 @@ public class Data : ScriptableObject
     [Header("Collider Check")]
     public float groundRadius;
     public LayerMask groundMask;
+
+    [Header("Crouch")]
+    public float standColliderHeight = 2f;
+    public float crouchColliderHeight=0.8f;
+
+    [Header("Dash")]
+    public float dashSpeed = 15f;
+    public float dashLength = .3f;
+    public float dashCounter = .5f;
+
 }

@@ -9,6 +9,9 @@ public class PlayerInput : MonoBehaviour
     public int inputX;
     public int inputY;
 
+    [Header("Dash")]
+    public bool dash;
+
     [Header("Jump")]
     public bool jumpInput;
 
@@ -26,9 +29,15 @@ public class PlayerInput : MonoBehaviour
         
     }
 
+    public void DashInput()
+    {
+        dash = Input.GetKeyDown(KeyCode.L);
+    }
+
     private void Update()
     {
         MoveInput();
         JumpInput();
+        DashInput();
     }
 }

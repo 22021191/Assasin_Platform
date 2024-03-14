@@ -29,6 +29,10 @@ public class MoveState : PlayerGroundState
         {
             player.stateMachine.ChangeState(player.idleState);
         }
+        if (inputY == -1)
+        {
+            stateMachine.ChangeState(player.crouchWalk);
+        }
     }
 
     public override void PhysicsUpdate()

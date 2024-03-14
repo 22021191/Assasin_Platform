@@ -25,6 +25,10 @@ public class IdleState : PlayerGroundState
         {
             player.stateMachine.ChangeState(player.moveState);
         }
+        if(inputY==-1)
+        {
+            player.stateMachine.ChangeState(player.crouchIdle);
+        }
     }
 
     public override void PhysicsUpdate()
