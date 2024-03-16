@@ -8,6 +8,8 @@ public class PlayerGroundState : PlayerState
     protected int inputY;
     protected bool onGround;
     protected bool isTouchingCeiling;
+    protected bool isTouchingWall;
+    protected bool grabInput;
     protected bool dash;
     public PlayerGroundState(Player player, PlayerStateMachine stateMachine, Data playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
@@ -18,12 +20,15 @@ public class PlayerGroundState : PlayerState
         base.DoChecks();
         onGround = player.GroundCheck();
         isTouchingCeiling=player.TopCheck();
+        isTouchingWall = player.WallCheck();
     }
 
     public override void Enter()
     {
         base.Enter();
         player.jumpState.doubleJump= true;
+        player._rb2d.gravityScale = 1;
+        player._rb2d.drag = data._groundLinearDrag;
     }
 
     public override void Exit()
@@ -37,6 +42,7 @@ public class PlayerGroundState : PlayerState
         inputX = player.input.inputX;
         inputY= player.input.inputY;
         dash=player.input.dash;
+        grabInput=player.input.grabInput;
 
         if (player.input.jumpInput)
         {
@@ -45,9 +51,12 @@ public class PlayerGroundState : PlayerState
         {
             player.airState.StartCoyoteTime();
             stateMachine.ChangeState(player.airState);
-        }else if (dash)
+        }else if (dash&&player.input.inputY!=-1)
         {
             stateMachine.ChangeState(player.dashState);
+        }else if(isTouchingWall&&grabInput)
+        {
+            stateMachine.ChangeState(player.wallGrabState);
         }
 
     }
@@ -55,6 +64,6 @@ public class PlayerGroundState : PlayerState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        player._rb2d.gravityScale = 1;
+        
     }
 }

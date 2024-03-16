@@ -21,7 +21,16 @@ public class IdleState : PlayerGroundState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if(inputX!=0)
+        player._horizontalSpeed = Mathf.MoveTowards(player._horizontalSpeed, 0, data.deceleration * Time.deltaTime);
+
+        if (exitState)
+        {
+            return;
+        }
+
+        player.SetVelocityX(player._horizontalSpeed);
+
+        if (inputX!=0)
         {
             player.stateMachine.ChangeState(player.moveState);
         }

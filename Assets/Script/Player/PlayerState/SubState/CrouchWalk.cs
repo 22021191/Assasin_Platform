@@ -24,7 +24,7 @@ public class CrouchWalk : PlayerGroundState
     {
         base.LogicUpdate();
 
-        player.SetVelocityX(inputX);
+        player.SetVelocityX(inputX*3);
         player.CheckFlip(inputX);
 
         if (inputX == 0)

@@ -7,9 +7,13 @@ public class PlayerAirState : PlayerState
     private int inputX;
     private bool jumpInput;
     private bool _OnGround;
+    private bool _OnWall;
+    private bool _OnWallBack;
     private bool canJump;
     private bool coyoteTime;
     private bool dash;
+    private bool grabInput;
+    
 
     public PlayerAirState(Player player, PlayerStateMachine stateMachine, Data playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
@@ -19,6 +23,9 @@ public class PlayerAirState : PlayerState
     {
         base.DoChecks();
         _OnGround = player.GroundCheck();
+        _OnWall = player.WallCheck();
+        _OnWallBack=player.WallCheckBack();
+        
     }
 
     public override void Enter()
@@ -29,6 +36,8 @@ public class PlayerAirState : PlayerState
     public override void Exit()
     {
         base.Exit();
+        player._rb2d.gravityScale = 1;
+        player._rb2d.drag = 1;
     }
 
     public override void LogicUpdate()
@@ -39,7 +48,8 @@ public class PlayerAirState : PlayerState
         dash = player.input.dash;
         inputX = player.input.inputX;
         jumpInput = player.input.jumpInput;
-        
+        grabInput=player.input.grabInput;
+
         if (_OnGround && player._rb2d.velocity.y < 0.1f)
         {
             stateMachine.ChangeState(player.landState);
@@ -47,18 +57,32 @@ public class PlayerAirState : PlayerState
         else if (dash)
         {
             stateMachine.ChangeState(player.dashState);
+        }else if ((_OnWall||_OnWallBack) && jumpInput)
+        {
+            player.wallJumpState.WallJumpDirection(_OnWall);
+            stateMachine.ChangeState(player.wallJumpState);
         }
         else if (jumpInput && player.jumpState.doubleJump)
         {
-            if(!coyoteTime)
+            if (!coyoteTime)
             {
                 player.jumpState.doubleJump = false;
             }
             stateMachine.ChangeState(player.jumpState);
-        } else
+        }
+        else if (_OnWall && grabInput)
+        {
+            stateMachine.ChangeState(player.wallGrabState);
+
+        }
+        else if (_OnWall && inputX == player.facingRight && player._rb2d.velocity.y < 0)
+        {
+            stateMachine.ChangeState(player.wallSliceState);
+        }
+        else
         {
             player.CheckFlip(inputX);
-            player.SetVelocityX(inputX);
+            player.SetVelocityX(inputX*data.maxSpeed);
         }
 
         player.anim.SetFloat("VelocityY", AnimTriggerY());

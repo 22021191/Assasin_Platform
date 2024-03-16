@@ -8,6 +8,7 @@ public class Data : ScriptableObject
     [Header("Move State")]
     public float maxSpeed = 12f;
     public float acceleration = 30f;
+    public float deceleration = 180f;
     public float _groundLinearDrag = 7f;
 
     [Header("Jump State")]
@@ -21,7 +22,19 @@ public class Data : ScriptableObject
 
     [Header("Collider Check")]
     public float groundRadius;
+    public float wallDistance;
     public LayerMask groundMask;
+
+    [Header("Wall Slice")]
+    public float sliceSpeed=3f;
+
+    [Header("Wall Climb")]
+    public float climdSpeed = 3f;
+
+    [Header("Wall Jump")]
+    public float wallJumpTime;
+    public float wallJumpVelocity;
+    public Vector2 wallAngle=new Vector2(1,2);
 
     [Header("Crouch")]
     public float standColliderHeight = 2f;
@@ -31,5 +44,6 @@ public class Data : ScriptableObject
     public float dashSpeed = 15f;
     public float dashLength = .3f;
     public float dashCounter = .5f;
+    public float dashTimeScale = 0.25f;
 
 }

@@ -11,6 +11,10 @@ public class PlayerInput : MonoBehaviour
 
     [Header("Dash")]
     public bool dash;
+    public float counter;
+
+    [Header("Wall")]
+    public bool grabInput;
 
     [Header("Jump")]
     public bool jumpInput;
@@ -31,12 +35,19 @@ public class PlayerInput : MonoBehaviour
 
     public void DashInput()
     {
-        dash = Input.GetKeyDown(KeyCode.L);
+        counter-=Time.deltaTime;
+        dash = Input.GetKeyDown(KeyCode.L)&&(counter<0);
+    }
+
+    public void GrabInput()
+    {
+        grabInput = Input.GetKey(KeyCode.O);
     }
 
     private void Update()
     {
         MoveInput();
+        GrabInput();
         JumpInput();
         DashInput();
     }

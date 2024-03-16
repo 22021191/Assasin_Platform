@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class MoveState : PlayerGroundState
 {
@@ -21,8 +22,14 @@ public class MoveState : PlayerGroundState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        
-        player.SetVelocityX(inputX);
+
+        if (exitState)
+        {
+            return;
+        }
+
+        player._horizontalSpeed = Mathf.MoveTowards(player._horizontalSpeed, data.maxSpeed * inputX, data.acceleration * Time.deltaTime);
+        player.SetVelocityX(player._horizontalSpeed);
         player.CheckFlip(inputX);
 
         if (inputX == 0)

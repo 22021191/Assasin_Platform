@@ -8,6 +8,7 @@ public class PlayerState
     protected PlayerStateMachine stateMachine;
     protected Data data;
     protected float startTime;
+    protected bool exitState;
 
     private string animName;
 
@@ -21,6 +22,7 @@ public class PlayerState
 
     public virtual void Enter()
     {
+        exitState = false;
         DoChecks();
         player.ChangeAnim(animName);
         startTime= Time.time;
@@ -28,7 +30,7 @@ public class PlayerState
 
     public virtual void Exit()
     {
-
+        exitState= true;
     }
 
     public virtual void LogicUpdate()

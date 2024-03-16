@@ -12,13 +12,18 @@ public class Player : MonoBehaviour
     public Rigidbody2D _rb2d;
     public CapsuleCollider2D collider;
 
+    [Header("Check Value")]
+    [SerializeField] private GameObject groundCheck;
+    [SerializeField] private GameObject topCheck;
+    [SerializeField] private GameObject wallCheck;
+    
+
     [Header("Variable")]
     private Vector2 workSpace;
     private Vector2 curVerlocity;
     [SerializeField] private string changeAnimName;
-    [SerializeField] private GameObject groundCheck;
-    [SerializeField] private GameObject topCheck;
     public int facingRight;
+    public float _horizontalSpeed;
     public PlayerInput input;
     public Animator anim { get;private set; }
     #endregion
@@ -36,6 +41,10 @@ public class Player : MonoBehaviour
     public CrouchIdle crouchIdle;
     public CrouchWalk crouchWalk;
     public DashState dashState;
+    public WallClimbState wallClimbState;
+    public WallSliceState wallSliceState;
+    public WallGrabState wallGrabState;
+    public WallJumpState wallJumpState;
     #endregion
 
     private void Awake()
@@ -58,6 +67,10 @@ public class Player : MonoBehaviour
         crouchIdle = new CrouchIdle(this, stateMachine, data, "CrouchIdle");
         crouchWalk = new CrouchWalk(this, stateMachine, data, "CrouchWalk");
         dashState = new DashState(this, stateMachine, data, "Dash");
+        wallClimbState = new WallClimbState(this, stateMachine, data, "Climb");
+        wallGrabState = new WallGrabState(this, stateMachine, data, "Grab");
+        wallSliceState = new WallSliceState(this, stateMachine, data, "Slice");
+        wallJumpState = new WallJumpState(this, stateMachine, data, "WallJump");
     }
 
     void Start()
@@ -84,12 +97,11 @@ public class Player : MonoBehaviour
         curVerlocity = _rb2d.velocity;
     }
 
-    public void SetVelocityX(float horizontalDirection)
+    public void SetVelocityX(float speed)
     {
-        _rb2d.AddForce(new Vector2(horizontalDirection, 0f) * data.acceleration);
-
-        if (Mathf.Abs(_rb2d.velocity.x) > data.maxSpeed)
-            _rb2d.velocity = new Vector2(Mathf.Sign(_rb2d.velocity.x) * data.maxSpeed, _rb2d.velocity.y);
+        workSpace.Set(speed, curVerlocity.y);
+        _rb2d.velocity = workSpace;
+        curVerlocity = workSpace;
     }
 
     public void SetColliderHeight(float height)
@@ -101,6 +113,14 @@ public class Player : MonoBehaviour
 
         collider.size = workSpace;
         collider.offset = center;
+    }
+
+    public void SetVelocity(float velocity, Vector2 angle, int direction)
+    {
+        angle.Normalize();
+        workSpace.Set(angle.x * velocity * direction, angle.y * velocity);
+        _rb2d.velocity = workSpace;
+        curVerlocity = workSpace;
     }
     #endregion
 
@@ -118,6 +138,17 @@ public class Player : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.transform.position, data.groundRadius, data.groundMask);
     }
 
+    public bool WallCheck()
+    {
+        return Physics2D.Raycast(wallCheck.transform.position, Vector2.right * facingRight, data.wallDistance,data.groundMask);
+
+    }
+
+    public bool WallCheckBack()
+    {
+        return Physics2D.Raycast(wallCheck.transform.position, Vector2.right * -1*facingRight, data.wallDistance, data.groundMask);
+
+    }
     public bool TopCheck()
     {
         return Physics2D.OverlapCircle(topCheck.transform.position, data.groundRadius, data.groundMask);
