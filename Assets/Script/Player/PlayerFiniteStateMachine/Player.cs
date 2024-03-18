@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject groundCheck;
     [SerializeField] private GameObject topCheck;
     [SerializeField] private GameObject wallCheck;
+    [SerializeField] private GameObject ledgeCheck;
     
 
     [Header("Variable")]
@@ -45,6 +46,7 @@ public class Player : MonoBehaviour
     public WallSliceState wallSliceState;
     public WallGrabState wallGrabState;
     public WallJumpState wallJumpState;
+    public LedgeClimbState ledge;
     #endregion
 
     private void Awake()
@@ -71,6 +73,7 @@ public class Player : MonoBehaviour
         wallGrabState = new WallGrabState(this, stateMachine, data, "Grab");
         wallSliceState = new WallSliceState(this, stateMachine, data, "Slice");
         wallJumpState = new WallJumpState(this, stateMachine, data, "WallJump");
+        ledge = new LedgeClimbState(this, stateMachine, data, "Ledge");
     }
 
     void Start()
@@ -104,6 +107,13 @@ public class Player : MonoBehaviour
         curVerlocity = workSpace;
     }
 
+    public void SetVelocityZero()
+    {
+        _rb2d.velocity = Vector2.zero;
+        curVerlocity= Vector2.zero;
+
+    }
+
     public void SetColliderHeight(float height)
     {
         Vector2 center = collider.offset;
@@ -133,12 +143,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    public bool LedgeCheck()
+    {
+        return Physics2D.Raycast(ledgeCheck.transform.position, Vector2.right * facingRight, data.ledgeDistance, data.groundMask);
+    }
+
     public bool GroundCheck()
     {
         return Physics2D.OverlapCircle(groundCheck.transform.position, data.groundRadius, data.groundMask);
     }
 
-    public bool WallCheck()
+    public bool WallFrontCheck()
     {
         return Physics2D.Raycast(wallCheck.transform.position, Vector2.right * facingRight, data.wallDistance,data.groundMask);
 
@@ -161,6 +176,25 @@ public class Player : MonoBehaviour
         facingRight *= -1;
         transform.Rotate(0, 180, 0);
     }
+
+    public Vector2 DetermineCornerPosition()
+    {
+        RaycastHit2D xHit = Physics2D.Raycast(wallCheck.transform.position, Vector2.right * facingRight, data.wallDistance, data.groundMask);
+        float xDist = xHit.distance;
+        workSpace.Set((xDist + 0.015f) * facingRight, 0f);
+        RaycastHit2D yHit = Physics2D.Raycast(ledgeCheck.transform.position + (Vector3)(workSpace), Vector2.down, ledgeCheck.transform.position.y - wallCheck.transform.position.y + 0.015f, data.groundMask);
+        float yDist = yHit.distance;
+
+        workSpace.Set(wallCheck.transform.position.x + (xDist * facingRight), ledgeCheck.transform.position.y - yDist);
+        return workSpace;
+    }
+
+    private void AnimationTrigger()
+    {
+        stateMachine.CurrentState.AnimationTrigger();
+    }
+
+    private void AnimtionFinishTrigger() => stateMachine.CurrentState.AnimationFinishTrigger();
 
     public void ChangeAnim(string AnimName)
     {

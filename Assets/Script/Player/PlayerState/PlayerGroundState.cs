@@ -20,7 +20,7 @@ public class PlayerGroundState : PlayerState
         base.DoChecks();
         onGround = player.GroundCheck();
         isTouchingCeiling=player.TopCheck();
-        isTouchingWall = player.WallCheck();
+        isTouchingWall = player.WallFrontCheck();
     }
 
     public override void Enter()

@@ -45,5 +45,11 @@ public class Data : ScriptableObject
     public float dashLength = .3f;
     public float dashCounter = .5f;
     public float dashTimeScale = 0.25f;
+    public float dashEndYMultiplier;
+
+    [Header("Ledge Climb")]
+    public float ledgeDistance;
+    public Vector2 startOffset;
+    public Vector2 stopOffset;
 
 }

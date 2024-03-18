@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpState :PlayerState
+public class JumpState :PlayerAbilityState
 {
     private bool _OnGround;
     public bool doubleJump;
@@ -21,6 +21,7 @@ public class JumpState :PlayerState
     {
         base.Enter();
         player.SetVelocityY(data.jumpForce);
+        isAbilityDone = true;
     }
 
     public override void Exit()
@@ -32,14 +33,6 @@ public class JumpState :PlayerState
     {
         base.LogicUpdate();
         
-        if(_OnGround&player._rb2d.velocity.y<0.1f) 
-        {
-            stateMachine.ChangeState(player.idleState);
-        }
-        else
-        {
-            stateMachine.ChangeState(player.airState);
-        }
     }
 
     public override void PhysicsUpdate()
