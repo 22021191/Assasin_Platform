@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject topCheck;
     [SerializeField] private GameObject wallCheck;
     [SerializeField] private GameObject ledgeCheck;
-    
 
     [Header("Variable")]
     private Vector2 workSpace;
@@ -27,6 +26,8 @@ public class Player : MonoBehaviour
     public float _horizontalSpeed;
     public PlayerInput input;
     public Animator anim { get;private set; }
+    public GameObject dashDirectionObj;
+    public Weapon weapon;
     #endregion
 
     #region State Value
@@ -47,6 +48,7 @@ public class Player : MonoBehaviour
     public WallGrabState wallGrabState;
     public WallJumpState wallJumpState;
     public LedgeClimbState ledge;
+    public AttackState attack;
     #endregion
 
     private void Awake()
@@ -74,6 +76,7 @@ public class Player : MonoBehaviour
         wallSliceState = new WallSliceState(this, stateMachine, data, "Slice");
         wallJumpState = new WallJumpState(this, stateMachine, data, "WallJump");
         ledge = new LedgeClimbState(this, stateMachine, data, "Ledge");
+        attack = new AttackState(this, stateMachine, data, "Attack");
     }
 
     void Start()
@@ -123,6 +126,13 @@ public class Player : MonoBehaviour
 
         collider.size = workSpace;
         collider.offset = center;
+    }
+
+    public void SetVelocity(float velocity, Vector2 direction)
+    {
+        workSpace = direction * velocity;
+        _rb2d.velocity = workSpace;
+        curVerlocity = workSpace;
     }
 
     public void SetVelocity(float velocity, Vector2 angle, int direction)
@@ -192,9 +202,14 @@ public class Player : MonoBehaviour
     private void AnimationTrigger()
     {
         stateMachine.CurrentState.AnimationTrigger();
+        
     }
 
-    private void AnimtionFinishTrigger() => stateMachine.CurrentState.AnimationFinishTrigger();
+    private void AnimtionFinishTrigger()
+    {
+        stateMachine.CurrentState.AnimationFinishTrigger();
+        
+    }
 
     public void ChangeAnim(string AnimName)
     {

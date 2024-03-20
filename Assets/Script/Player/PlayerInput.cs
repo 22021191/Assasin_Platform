@@ -10,14 +10,21 @@ public class PlayerInput : MonoBehaviour
     public int inputY;
 
     [Header("Dash")]
-    public bool dash;
-    public float counter;
+    public bool dashInput;
+    public float dashInputStartTime;
+    public float inputHoldTime;
 
     [Header("Wall")]
     public bool grabInput;
 
     [Header("Jump")]
     public bool jumpInput;
+
+    [Header("Attack")]
+    public bool attackInput;
+    public float attackInputStartTime;
+    public bool canNextCombo;
+    public float timeNextCombo;
 
     public void MoveInput()
     {
@@ -35,13 +42,46 @@ public class PlayerInput : MonoBehaviour
 
     public void DashInput()
     {
-        counter-=Time.deltaTime;
-        dash = Input.GetKeyDown(KeyCode.L)&&(counter<0);
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            dashInput = true;
+            dashInputStartTime = Time.time;
+        }
+        
+    }
+
+    public bool DashStop()
+    {
+        return Input.GetKeyUp(KeyCode.L);
     }
 
     public void GrabInput()
     {
         grabInput = Input.GetKey(KeyCode.O);
+    }
+    public void UseDashInput() => dashInput = false;
+
+    private void CheckDashInputHoldTime()
+    {
+        if (Time.time >= dashInputStartTime + inputHoldTime)
+        {
+            dashInput = false;
+        }
+    }
+
+    public Vector2 DashDirectionInput(float facing)
+    {
+        if (inputX == inputY && inputY == 0)
+        {
+            return Vector2.right * facing;
+        }
+        return new Vector2(inputX,inputY);
+    }
+
+    public void AttackInput()
+    {
+        attackInput=Input.GetKeyDown(KeyCode.J);
+        canNextCombo = Time.time > attackInputStartTime + timeNextCombo;
     }
 
     private void Update()
@@ -50,5 +90,6 @@ public class PlayerInput : MonoBehaviour
         GrabInput();
         JumpInput();
         DashInput();
+        AttackInput();
     }
 }

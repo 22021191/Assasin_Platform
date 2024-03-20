@@ -32,11 +32,15 @@ public class IdleState : PlayerGroundState
 
         if (inputX!=0)
         {
-            player.stateMachine.ChangeState(player.moveState);
+            stateMachine.ChangeState(player.moveState);
         }
-        if(inputY==-1)
+        else if (player.input.attackInput)
         {
-            player.stateMachine.ChangeState(player.crouchIdle);
+            stateMachine.ChangeState(player.attack);
+        }
+        else if(inputY==-1)
+        {
+            stateMachine.ChangeState(player.crouchIdle);
         }
     }
 

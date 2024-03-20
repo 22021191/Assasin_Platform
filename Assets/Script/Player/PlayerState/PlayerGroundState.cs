@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerGroundState : PlayerState
 {
@@ -41,7 +42,7 @@ public class PlayerGroundState : PlayerState
         base.LogicUpdate();
         inputX = player.input.inputX;
         inputY= player.input.inputY;
-        dash=player.input.dash;
+        dash=player.input.dashInput;
         grabInput=player.input.grabInput;
 
         if (player.input.jumpInput)
@@ -51,12 +52,13 @@ public class PlayerGroundState : PlayerState
         {
             player.airState.StartCoyoteTime();
             stateMachine.ChangeState(player.airState);
-        }else if (dash&&player.input.inputY!=-1)
-        {
-            stateMachine.ChangeState(player.dashState);
         }else if(isTouchingWall&&grabInput)
         {
             stateMachine.ChangeState(player.wallGrabState);
+        }
+        else if (dash && player.dashState.CheckIfCanDash() && !isTouchingCeiling)
+        {
+            stateMachine.ChangeState(player.dashState);
         }
 
     }

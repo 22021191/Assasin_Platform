@@ -36,7 +36,11 @@ public class MoveState : PlayerGroundState
         {
             player.stateMachine.ChangeState(player.idleState);
         }
-        if (inputY == -1)
+        else if (player.input.attackInput)
+        {
+            stateMachine.ChangeState(player.attack);
+        }
+        else if (inputY == -1)
         {
             stateMachine.ChangeState(player.crouchWalk);
         }

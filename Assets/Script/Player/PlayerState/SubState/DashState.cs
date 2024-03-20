@@ -4,70 +4,94 @@ using UnityEngine;
 
 public class DashState : PlayerAbilityState
 {
-    private bool exitDash;
-    private bool isGrounded;
-    private int inputY;
+    private bool isHolding;
+    private bool dashInputStop;
+
     private float lastDashTime;
+
+    private Vector2 dashDirection;
+    private Vector2 dashDirectionInput;
 
     public DashState(Player player, PlayerStateMachine stateMachine, Data playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
-
     }
-
-    public override void DoChecks()
-    {
-        base.DoChecks();
-        isGrounded = player.GroundCheck();
-    }
-
     public override void Enter()
     {
         base.Enter();
-        exitDash = false;
-        inputY = player.input.inputY;
-        lastDashTime = Time.time;
 
-        player._rb2d.velocity = Vector2.zero;
-        player._rb2d.gravityScale = 0;
-        player._rb2d.drag = 0;
-        Time.timeScale = data.dashTimeScale;
+        player.input.UseDashInput();
+
+        isHolding = true;
+        dashDirection = Vector2.right * player.facingRight;
+
+        Time.timeScale = data.holdTimeScale;
+        startTime = Time.unscaledTime;
+
+        player.dashDirectionObj.gameObject.SetActive(true);
+
     }
 
     public override void Exit()
     {
         base.Exit();
-        Time.timeScale = 1;
-        player.input.counter = data.dashCounter;
-        player._rb2d.velocity = Vector2.zero;
-       
+
+        if (player._rb2d.velocity.y > 0)
+        {
+            player.SetVelocityY(player._rb2d.velocity.y * data.dashEndYMultiplier);
+        }
     }
 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        CheckExit();
 
-        Vector2 dir = new Vector2(player.facingRight*2, inputY);
-        player._rb2d.velocity = dir.normalized * data.dashSpeed;
-
-        if (exitDash)
+        if (!exitState)
         {
-            isAbilityDone = true;
+
+            if (isHolding)
+            {
+                dashDirectionInput = player.input.DashDirectionInput(player.facingRight);
+                dashInputStop = player.input.DashStop();
+
+                if (dashDirectionInput != Vector2.zero)
+                {
+                    dashDirection = dashDirectionInput;
+                    dashDirection.Normalize();
+                }
+
+                float angle = Vector2.SignedAngle(Vector2.right, dashDirection);
+                player.dashDirectionObj.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
+                if (dashInputStop || Time.unscaledTime >= startTime + data.maxHoldTime)
+                {
+                    isHolding = false;
+                    Time.timeScale = 1f;
+                    startTime = Time.time;
+                    player.CheckFlip(Mathf.RoundToInt(dashDirection.x));
+                    player._rb2d.drag = data.dashDrag;
+                    player.SetVelocity(data.dashSpeed,dashDirection);
+                    player.dashDirectionObj.gameObject.SetActive(false);
+                    
+                }
+            }
+            else
+            {
+                player.SetVelocity(data.dashSpeed, dashDirection);
+                
+                if (Time.time >= startTime + data.dashLength)
+                {
+                    player._rb2d.drag = 0f;
+                    isAbilityDone = true;
+                    lastDashTime = Time.time;
+                }
+            }
         }
     }
 
+    
     public bool CheckIfCanDash()
     {
         return Time.time >= lastDashTime + data.dashCounter;
     }
 
-    private void CheckExit()
-    {
-        exitDash = startTime + data.dashLength < Time.time;
-    }
-
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-    }
 }

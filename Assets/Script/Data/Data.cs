@@ -44,7 +44,9 @@ public class Data : ScriptableObject
     public float dashSpeed = 15f;
     public float dashLength = .3f;
     public float dashCounter = .5f;
-    public float dashTimeScale = 0.25f;
+    public float holdTimeScale = 0.25f;
+    public float maxHoldTime;
+    public float dashDrag;
     public float dashEndYMultiplier;
 
     [Header("Ledge Climb")]
@@ -52,4 +54,6 @@ public class Data : ScriptableObject
     public Vector2 startOffset;
     public Vector2 stopOffset;
 
+    [Header("Attack")]
+    public int comboCount;
 }

@@ -49,6 +49,10 @@ public class PlayerWallState : PlayerState
         inputY = player.input.inputY;
         grabInput=player.input.grabInput;
         jumpInput = player.input.jumpInput;
+        if(player.input.dashInput)
+        {
+            player.input.dashInput = false;
+        }
 
         if (jumpInput)
         {

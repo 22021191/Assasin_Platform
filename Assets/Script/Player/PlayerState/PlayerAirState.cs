@@ -65,9 +65,12 @@ public class PlayerAirState : PlayerState
         xInput = player.input.inputX;
         jumpInput = player.input.jumpInput;
         grabInput = player.input.grabInput;
-        dashInput = player.input.dash;
-
-        if (isGrounded && player._rb2d.velocity.y < 0.01f)
+        dashInput = player.input.dashInput;
+        if (player.input.attackInput)
+        {
+            stateMachine.ChangeState(player.attack);
+        }
+        else if (isGrounded && player._rb2d.velocity.y < 0.01f)
         {
             stateMachine.ChangeState(player.landState);
         }

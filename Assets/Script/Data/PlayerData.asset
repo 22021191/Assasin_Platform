@@ -30,14 +30,16 @@ MonoBehaviour:
   climdSpeed: 3
   wallJumpTime: 0.3
   wallJumpVelocity: 30
-  wallAngle: {x: 1, y: 1}
+  wallAngle: {x: 0.5, y: 1}
   standColliderHeight: 2
   crouchColliderHeight: 1
   dashSpeed: 40
   dashLength: 0.2
   dashCounter: 0.5
-  dashTimeScale: 0.5
+  holdTimeScale: 0.25
+  maxHoldTime: 1
+  dashDrag: 0
   dashEndYMultiplier: 0
   ledgeDistance: 0.2
   startOffset: {x: 0.5, y: 1}
-  stopOffset: {x: 0, y: 0}
+  stopOffset: {x: 0.5, y: 0.8}

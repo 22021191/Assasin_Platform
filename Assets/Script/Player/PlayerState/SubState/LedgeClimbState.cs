@@ -33,6 +33,7 @@ public class LedgeClimbState : PlayerState
 
         player.transform.position = detectedPos;
         player.SetVelocityZero();
+        player._rb2d.gravityScale = 0;
         cornerPos = player.DetermineCornerPosition();
 
         startPos.Set(cornerPos.x - (player.facingRight * data.startOffset.x), cornerPos.y - data.startOffset.y);
@@ -44,13 +45,14 @@ public class LedgeClimbState : PlayerState
     public override void Exit()
     {
         base.Exit();
-
+        player._rb2d.gravityScale = 1;
 
         if (isClimbing)
         {
             player.transform.position = stopPos;
             isClimbing = false;
         }
+
     }
 
     public override void LogicUpdate()
@@ -76,11 +78,10 @@ public class LedgeClimbState : PlayerState
             player.SetVelocityZero();
             player.transform.position = startPos;
 
-            if (xInput == player.facingRight )
+            if (xInput == player.facingRight&&isHanging)
             {
                 CheckForSpace();
                 isClimbing = true;
-                Debug.Log("Ok");
                 player.anim.SetBool("climbLedge", true);
             }
             else if (yInput == -1 && isHanging && !isClimbing)
@@ -104,11 +105,12 @@ public class LedgeClimbState : PlayerState
 
     public void SetDetectedPosition(Vector2 pos) => detectedPos = pos;
 
-    public void AnimationTrigger() {
+    public override void AnimationTrigger() {
         isHanging = true;
+        
     }
 
-    public void AnimationFinishTrigger()
+    public override void AnimationFinishTrigger()
     {
         isAnimationFinished = true;
         player.anim.SetBool("climbLedge", false);
