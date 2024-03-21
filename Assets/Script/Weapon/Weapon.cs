@@ -34,16 +34,14 @@ public class Weapon : MonoBehaviour
 
     public void Attack()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, weaponData.attackDistance, Enemy);
-        if(hitEnemies.Length == 0)
+        Collider2D[] enemys = Physics2D.OverlapCircleAll(transform.position, weaponData.attackDistance, Enemy);
+        if(enemys.Length == 0)
         {
             return;
         }
-        //effect.SetBool("Attack", true);
-        foreach (Collider2D enemy in hitEnemies)
+        foreach (Collider2D enemy in enemys)
         {
             Damge.Send(enemy.transform);
-            Debug.Log(weaponData.amountOfAttacks);
         }
     }
 }
