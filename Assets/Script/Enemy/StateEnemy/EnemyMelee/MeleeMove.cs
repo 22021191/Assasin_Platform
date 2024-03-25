@@ -28,7 +28,7 @@ public class MeleeMove : EnemyMoveState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if (isPlayerInMinAgroRange)
+        if (canAttack)
         {
             stateMachine.ChangeState(melee._attackState);
         }

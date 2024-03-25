@@ -21,17 +21,27 @@ public class MeleeEnemy : Enemy
         _moveState = new MeleeMove(this, stateMachine, "Move", data);
 
     }
+    public override void Start()
+    {
+        base.Start();
+        stateMachine.Initialize(_idleState);
+        reciver.hpMax = data.maxHealth;
+        reciver.Reborn();
+    }
 
     public override void Update()
     {
         base.Update();
     }
 
-    private void Start()
+    public void AnimationFinishTrigger()
     {
-        stateMachine.Initialize(_idleState);
+        stateMachine.currentState.AnimationFinishTrigger();
     }
 
-
-
+    public override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+        Gizmos.DrawWireSphere(attackPos.transform.position, data.attackDistance);
+    }
 }

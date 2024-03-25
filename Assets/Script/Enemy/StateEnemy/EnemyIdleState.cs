@@ -7,7 +7,7 @@ public class EnemyIdleState : State
 
     private bool flipAfterIdle;
     private float idleTime;
-    protected bool isPlayerInMinAgroRange;
+    protected bool canAttack;
     public EnemyIdleState(Enemy enemy, FiniteStateMachine stateMachine, string animBoolName,EnemyData data) : base(enemy, stateMachine, animBoolName,data)
     {
     }
@@ -21,7 +21,7 @@ public class EnemyIdleState : State
     {
         base.Enter();
         SetRandomIdleTime();
-        isPlayerInMinAgroRange=enemy.CheckPlayerInMaxAgroRange();
+        canAttack=enemy.CheckCanAttack();
     }
 
     public override void Exit()

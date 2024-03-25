@@ -14,14 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 30
   damageHopSpeed: 3
-  wallCheckDistance: 0.2
-  ledgeCheckDistance: 0.4
+  damgeAttack: 0
+  attackDistance: 1
+  wallCheckDistance: 0.6
   groundCheckRadius: 0.3
-  minAgroDistance: 3
-  maxAgroDistance: 4
   _GroundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   _PlayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+  minIdleTime: 1
+  maxIdleTime: 1.2
+  speed: 4
+  maxLookPlayerDistance: 0

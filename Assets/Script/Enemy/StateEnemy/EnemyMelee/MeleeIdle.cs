@@ -30,7 +30,7 @@ public class MeleeIdle : EnemyIdleState
         base.LogicUpdate();
         if (_ExitState)
         {
-            if(isPlayerInMinAgroRange)
+            if(canAttack)
             {
                 stateMachine.ChangeState(melee._attackState);
             }

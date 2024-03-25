@@ -6,9 +6,10 @@ using UnityEngine;
 public class EnemyData:ScriptableObject 
 {
     [Header("Damge")]
-    public float maxHealth = 30f;
+    public int maxHealth = 30;
     public float damageHopSpeed = 3f;
     public float damgeAttack;
+    public float attackDistance;
 
     [Header("Collider")]
     public float wallCheckDistance = 0.2f;
@@ -20,7 +21,6 @@ public class EnemyData:ScriptableObject
     public float maxIdleTime;
 
     public float speed;
-    public float minAgroDistance;
-    public float maxAgroDistance;
+    public float maxLookPlayerDistance;
 
 }

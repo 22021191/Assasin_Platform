@@ -48,4 +48,5 @@ public class State
     {
 
     }
+    public virtual void AnimationFinishTrigger() => _ExitState = true;
 }

@@ -9,11 +9,6 @@ public class DamgeReciver : MonoBehaviour
     [SerializeField] public int hpMax = 2;
     [SerializeField] protected bool isDead = false;
 
-    public void OnEnable()
-    {
-        Reborn();
-    }
-
     public virtual void Reborn()
     {
         this.hp = this.hpMax;

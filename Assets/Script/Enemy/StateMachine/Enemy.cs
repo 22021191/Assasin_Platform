@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public Animator anim { get; private set; }
     public string animName { get; private set; }
     public int facingDirection;
+    public bool isAttack;
     [SerializeField] public DamgeReciver reciver;
     [SerializeField] public DamgeSender sender;
     
@@ -28,6 +29,11 @@ public class Enemy : MonoBehaviour
         stateMachine = new FiniteStateMachine();
     }
 
+    public virtual void Start()
+    {
+        rb2d= gameObject.GetComponent<Rigidbody2D>();
+    }
+
     public virtual void Update()
     {
         stateMachine.currentState.LogicUpdate();
@@ -40,7 +46,23 @@ public class Enemy : MonoBehaviour
 
     public void SetVelocityX(float velocity)
     {
-        rb2d.velocity.Set(velocity, 0);
+        rb2d.velocity=new Vector2(velocity,0);
+    }
+
+    public virtual void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(wallCheck.transform.position, data.wallCheckDistance);
+        Gizmos.DrawWireSphere(groundCheck.transform.position, data.groundCheckRadius);
+        Gizmos.DrawLine(playerCheck.position, playerCheck.position + Vector3.right * facingDirection * data.attackDistance);
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(playerCheck.position, playerCheck.position + Vector3.right * facingDirection * data.maxLookPlayerDistance);
+
+    }
+
+    public virtual bool CheckCanAttack()
+    {
+        return Physics2D.Raycast(playerCheck.position, transform.right, data.attackDistance, data._PlayerMask);
     }
 
     public bool WallCheckCollision()
@@ -53,27 +75,16 @@ public class Enemy : MonoBehaviour
     {
         return Physics2D.OverlapCircle(groundCheck.transform.position,data.groundCheckRadius,data._GroundMask);
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(wallCheck.transform.position, data.wallCheckDistance);
-        Gizmos.DrawWireSphere(groundCheck.transform.position, data.groundCheckRadius);
-        
-    }
 
-    public virtual bool CheckPlayerInMinAgroRange()
+    public virtual bool CheckInLookDistance()
     {
-        return Physics2D.Raycast(playerCheck.position, transform.right, data.minAgroDistance, data._PlayerMask);
-    }
-
-    public virtual bool CheckPlayerInMaxAgroRange()
-    {
-        return Physics2D.Raycast(playerCheck.position, transform.right, data.maxAgroDistance, data._PlayerMask);
+        return Physics2D.Raycast(playerCheck.position, transform.right, data.maxLookPlayerDistance, data._PlayerMask);
     }
 
     public virtual void Flip()
     {
         transform.Rotate(0, 180, 0);
+        facingDirection *= -1;
     }
 
     public virtual void ChangeAnim(string AnimName)

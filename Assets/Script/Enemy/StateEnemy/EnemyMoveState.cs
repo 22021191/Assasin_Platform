@@ -9,7 +9,7 @@ public class EnemyMoveState :State
 
     protected bool isTouchWall;
     protected bool isTouchGround;
-    protected bool isPlayerInMinAgroRange;
+    protected bool canAttack;
 
     public EnemyMoveState(Enemy enemy, FiniteStateMachine stateMachine, string animBoolName, EnemyData stateData) : base(enemy, stateMachine, animBoolName,stateData)
     {
@@ -22,7 +22,7 @@ public class EnemyMoveState :State
 
         isTouchGround = enemy.GroundCheckCollision();
         isTouchWall = enemy.WallCheckCollision();
-        isPlayerInMinAgroRange = enemy.CheckPlayerInMinAgroRange();
+        canAttack = enemy.CheckCanAttack();
     }
 
     public override void Enter()
