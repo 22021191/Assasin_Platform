@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="State" Collapsed="true">
+    <Position X="12.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAwABAAAACAAAAAAAAkAAAAAAAEAAAAIAAQAAEAABI=</HashCode>
+      <FileName>Assets\Script\Enemy\StateMachine\State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeleeAttack" Collapsed="true">
+    <Position X="5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAAAAAAEAAAAAAAEAAAAYAAAAAEIAAA=</HashCode>
+      <FileName>Assets\Script\Enemy\EnemyMelee\MeleeAttack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeleeEnemy" Collapsed="true">
+    <Position X="19.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAEAAACAAAAAAAAACAAAAAAAAAAAAgEAAAAEAAEA=</HashCode>
+      <FileName>Assets\Script\Enemy\EnemyMelee\MeleeEnemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeleeIdle" Collapsed="true">
+    <Position X="11.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAAAAAAEAAAAAAAEAAAAYAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\Enemy\EnemyMelee\MeleeIdle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeleeMove" Collapsed="true">
+    <Position X="12.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAAAAAAEAAAAAAAEAAAAYAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\Enemy\EnemyMelee\MeleeMove.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeleeStun" Collapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAAAAAAEAAAAAAAEAAAAYAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\Enemy\EnemyMelee\MeleeStun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlyAttackState" Collapsed="true">
+    <Position X="7.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAAAAAAEAAAAAAAEAAAAIAAAAAEIAQA=</HashCode>
+      <FileName>Assets\Script\Enemy\FlyEnemy\FlyAttackState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlyChaseState" Collapsed="true">
+    <Position X="16" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAQABAAAAAAAAAAAAAEACAAAAAEAAAAIAAAAAEAAQA=</HashCode>
+      <FileName>Assets\Script\Enemy\FlyEnemy\FlyChaseState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlyEnemy" Collapsed="true">
+    <Position X="19.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAiAAQACAAAAAAAAAAAAAAACAAAAAAAkAAEI=</HashCode>
+      <FileName>Assets\Script\Enemy\FlyEnemy\FlyEnemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlyIdleState" Collapsed="true">
+    <Position X="16" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAAAAAAEAAAAAAAFAAAAIAAAAAEAAQA=</HashCode>
+      <FileName>Assets\Script\Enemy\FlyEnemy\FlyIdleState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlyMoveState" Collapsed="true">
+    <Position X="18.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAYABAAAAAAAAAAAAAEAAAAAAAEAAAAIAAAAAEAAQA=</HashCode>
+      <FileName>Assets\Script\Enemy\FlyEnemy\FlyMoveState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlantAttackState" Collapsed="true">
+    <Position X="9.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAAAAAAEABAAAAAEAAAAIAAAAAEIAAA=</HashCode>
+      <FileName>Assets\Script\Enemy\PlantShootEnemy\PlantAttackState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlantEnemy" Collapsed="true">
+    <Position X="19.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAiIABAIAAAAAAAAAAABAAAAAABAgAAAAAEQ=</HashCode>
+      <FileName>Assets\Script\Enemy\PlantShootEnemy\PlantEnemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlantIdleState" Collapsed="true">
+    <Position X="13.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAAAAAAEABAAAAAEAAAAIAAAAAEAAAA=</HashCode>
+      <FileName>Assets\Script\Enemy\PlantShootEnemy\PlantIdleState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlantStunState" Collapsed="true">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAAAAAAEABAAAAAEAAAAIAAAAAEAAAA=</HashCode>
+      <FileName>Assets\Script\Enemy\PlantShootEnemy\PlantStunState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyAttackState" Collapsed="true">
+    <Position X="7.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABQABAAAAAAAAAAAAAEAAAAAAAEAAAAIAAAAAAIAAA=</HashCode>
+      <FileName>Assets\Script\Enemy\StateEnemy\EnemyAttackState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyIdleState" Collapsed="true">
+    <Position X="12.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAABAAAEACAQAAAEAAAAIAAAAAAQAAA=</HashCode>
+      <FileName>Assets\Script\Enemy\StateEnemy\EnemyIdleState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyMoveState" Collapsed="true">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAQABAAAAAAAAAAAAAEACAAAAAEAAAAIAAgIAAAAAA=</HashCode>
+      <FileName>Assets\Script\Enemy\StateEnemy\EnemyMoveState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StunState" Collapsed="true">
+    <Position X="8" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAQABAAAAAAAAAAAAAEACAAAAAEAAAIIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\Enemy\StateEnemy\StunState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -25,8 +25,8 @@ public class MeleeEnemy : Enemy
     {
         base.Start();
         stateMachine.Initialize(_idleState);
-        reciver.hpMax = data.maxHealth;
-        reciver.Reborn();
+        //reciver.hpMax = data.maxHealth;
+        //reciver.Reborn();
     }
 
     public override void Update()

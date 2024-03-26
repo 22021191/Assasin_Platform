@@ -4,5 +4,25 @@ using UnityEngine;
 
 public abstract class Traps : MonoBehaviour
 {
-    public abstract void trigger();
+    protected Animator _anim;
+    protected string _ID;
+    protected virtual void Awake()
+    {
+        _anim = GetComponent<Animator>();
+    }
+
+    // Start is called before the first frame update
+    protected virtual void Start()
+    {
+
+    }
+
+    protected void SetUpObject()
+    {
+
+    }
+    protected virtual void Trigger()
+    {
+
+    }
 }

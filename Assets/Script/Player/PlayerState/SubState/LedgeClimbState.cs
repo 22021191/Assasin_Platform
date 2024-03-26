@@ -45,13 +45,13 @@ public class LedgeClimbState : PlayerState
     public override void Exit()
     {
         base.Exit();
-        player._rb2d.gravityScale = 1;
 
         if (isClimbing)
         {
             player.transform.position = stopPos;
             isClimbing = false;
         }
+        player._rb2d.gravityScale = 1;
 
     }
 

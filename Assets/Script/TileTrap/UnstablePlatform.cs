@@ -21,10 +21,10 @@ public class UnstablePlatform : Traps
         _animator.SetBool("Unstable", true);
     }
 
-    public override void trigger()
+    protected override void Trigger()
     {
-        Destroy(gameObject);
+        base.Trigger();
     }
 
-    
+
 }

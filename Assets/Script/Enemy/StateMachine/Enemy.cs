@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
 
     public void SetVelocityX(float velocity)
     {
-        rb2d.velocity=new Vector2(velocity,0);
+        transform.position += Vector3.right * velocity*Time.deltaTime;
     }
 
     public virtual void OnDrawGizmos()

@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PlayerState" Collapsed="true">
+    <Position X="15.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAACAAAAAAIAkAAAAAAAEAAABIAAQgAECABA=</HashCode>
+      <FileName>Assets\Script\Player\PlayerFiniteStateMachine\PlayerState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AttackState" Collapsed="true">
+    <Position X="20.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAACAAEAMAAIAAAAAEEAAA=</HashCode>
+      <FileName>Assets\Script\Player\PlayerState\SubState\AttackState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CrouchIdle" Collapsed="true">
+    <Position X="10" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\Player\PlayerState\SubState\CrouchIdle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CrouchWalk" Collapsed="true">
+    <Position X="10" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\Player\PlayerState\SubState\CrouchWalk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DashState" Collapsed="true">
+    <Position X="23" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAQAAgAIAAAAAAAAAAAAAAEAAAFAAAAIAAAAAAAAIA=</HashCode>
+      <FileName>Assets\Script\Player\PlayerState\SubState\DashState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdleState" Collapsed="true">
+    <Position X="6.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\Player\PlayerState\SubState\IdleState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JumpState" Collapsed="true">
+    <Position X="23" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAAAAAAEAQAAAAAEAEAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\Player\PlayerState\SubState\JumpState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LandState" Collapsed="true">
+    <Position X="8" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\Player\PlayerState\SubState\LandState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LedgeClimbState" Collapsed="true">
+    <Position X="15.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIQAAAAAAAAKAABAIAEAAAAAABEAQAAIAAEgAEEIII=</HashCode>
+      <FileName>Assets\Script\Player\PlayerState\SubState\LedgeClimbState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MoveState" Collapsed="true">
+    <Position X="12.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\Player\PlayerState\SubState\MoveState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WallClimbState" Collapsed="true">
+    <Position X="17.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\Player\PlayerState\SubState\WallClimbState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WallGrabState" Collapsed="true">
+    <Position X="13.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\Player\PlayerState\SubState\WallGrabState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WallJumpState" Collapsed="true">
+    <Position X="23" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAQABAAAAAAIAAAAAAEAAAAAAAEAAAIIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\Player\PlayerState\SubState\WallJumpState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WallSliceState" Collapsed="true">
+    <Position X="15.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\Player\PlayerState\SubState\WallSliceState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerAbilityState" Collapsed="true">
+    <Position X="20.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAAAAAAEAAAAAABEAAAIIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\Player\PlayerState\PlayerAbilityState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerAirState" Collapsed="true">
+    <Position X="19" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAA4AhAAAABACAgAAAAEAAAAIAAEAAAIIAAACgCEAAA=</HashCode>
+      <FileName>Assets\Script\Player\PlayerState\PlayerAirState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerGroundState" Collapsed="true">
+    <Position X="10" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAQAAAAAAAAAAEAAAAIAAEABAAIAAAIgAAIAA=</HashCode>
+      <FileName>Assets\Script\Player\PlayerState\PlayerGroundState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerWallState" Collapsed="true">
+    <Position X="15.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAACAgAAAAEAAAAIAAEABAIIAAAAgAAAAA=</HashCode>
+      <FileName>Assets\Script\Player\PlayerState\PlayerWallState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEQQAAQFAqCAACAEgICAwAGQCgCgABmARRIaGAAACH0=</HashCode>
+      <FileName>Assets\Script\Player\PlayerFiniteStateMachine\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerStateMachine" Collapsed="true">
+    <Position X="15.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABQAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\Player\PlayerFiniteStateMachine\PlayerStateMachine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
