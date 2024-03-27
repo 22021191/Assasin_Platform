@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyIdleState : State
+public class FlyIdleState : EnemyIdleState
 {
-    private bool isLook;
     private FlyEnemy fly;
     public FlyIdleState(FlyEnemy enemy, FiniteStateMachine stateMachine, string animBoolName, EnemyData data) : base(enemy, stateMachine, animBoolName, data)
     {
@@ -19,7 +18,7 @@ public class FlyIdleState : State
     public override void DoChecks()
     {
         base.DoChecks();
-        isLook = fly.LookPlayer();
+        
     }
 
     public override void Enter()
@@ -36,9 +35,9 @@ public class FlyIdleState : State
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if (isLook)
+        if (_ExitState)
         {
-            stateMachine.ChangeState(fly.chase);
+            stateMachine.ChangeState(fly.attack);
         }
     }
 

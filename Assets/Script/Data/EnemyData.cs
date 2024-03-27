@@ -22,5 +22,6 @@ public class EnemyData:ScriptableObject
 
     public float speed;
     public float maxLookPlayerDistance;
+    public float maxDistanceAttack;
 
 }

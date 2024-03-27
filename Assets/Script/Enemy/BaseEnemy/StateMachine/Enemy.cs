@@ -17,11 +17,11 @@ public class Enemy : MonoBehaviour
     
     [Header("Check Collider")]
     [SerializeField]
-    private Transform wallCheck;
+    protected Transform wallCheck;
     [SerializeField]
-    private Transform playerCheck;
+    protected Transform playerCheck;
     [SerializeField]
-    private Transform groundCheck;
+    protected Transform groundCheck;
     
     public virtual void Awake()
     {

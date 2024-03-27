@@ -8,6 +8,7 @@ public class FlyEnemy : Enemy
     public FlyChaseState chase { get; private set; }
     public FlyIdleState idle { get; private set; }
     public FlyMoveState move { get; private set; }
+    public FlySleepState sleep { get; private set; }
     
     [Header("Value Other")]
     public Transform startPos;
@@ -30,6 +31,7 @@ public class FlyEnemy : Enemy
         idle = new FlyIdleState(this, stateMachine, "Idle",data);
         move = new FlyMoveState(this, stateMachine, "Move", data);
         chase = new FlyChaseState(this, stateMachine, "Chase", data);
+        sleep = new FlySleepState(this, stateMachine, "Sleep", data);
     }
 
     public override void Update()
