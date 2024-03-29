@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class BossManager : Enemy
 {
-    public Transform playerPos {  get; private set; }
+    public List<Transform> attackPos;
     public List<EnemyAttackState> closeAttack;
     public List<EnemyAttackState> openAttack;
-    public List<Transform> attackPos; 
-
 
     public override void Awake()
     {
@@ -34,7 +32,7 @@ public class BossManager : Enemy
     public bool CheckLongRangeAttack()
     {
         bool result=Physics2D.Raycast(playerCheck.position, transform.right, data.maxDistanceAttack, data._PlayerMask);
-        return result&&!CheckCanAttack();
+        return result;
     }
 
     public EnemyAttackState RandomAttack(List<EnemyAttackState> listAttack)
@@ -44,17 +42,38 @@ public class BossManager : Enemy
         return listAttack[index];
     }
 
-    public void LookPlayer()
+    public Transform LookPlayer()
     {
         Collider2D detectedObjects = Physics2D.OverlapCircle(transform.position, data.maxLookPlayerDistance, data._PlayerMask);
-        playerPos = detectedObjects.transform;
+        if(detectedObjects == null) 
+        {
+            return null;
+        }
+        return detectedObjects.transform;
     }
 
-    public void CheckFlip()
+    public void CheckFlip(Transform playerPos)
     {
+        if (playerPos == null) return;
+
         if ((playerPos.transform.position.x - transform.position.x) * facingDirection < 0)
         {
             Flip();
         }
+    }
+
+    public void AnimationTrigger()
+    {
+        stateMachine.currentState.AnimationTrigger();
+    }
+
+    public void AnimationFinishTrigger()
+    {
+        stateMachine.currentState.AnimationFinishTrigger();
+    }
+
+    public void SetVelocity(Vector2 direction)
+    {
+        rb2d.velocity = direction*data.force;
     }
 }

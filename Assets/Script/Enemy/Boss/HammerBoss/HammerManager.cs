@@ -1,25 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class HammerManager : BossManager
 {
     public HammerIdleState idle {  get; private set; }
+    public HammerAirState air {  get; private set; }
+    public HammerJumpState jump { get; private set; }
     public HammerMoveState move { get; private set; }
 
-    [SerializeField] private List<Transform> attackPos;
+    private HammerAttack1State attack1;
+    private HammerAttack1State attack4;
+    private HammerAttack2State meleeAttack2;
+    private HammerAttack2State meleeAttack3;
+
+    [SerializeField] private List<Vector3> size;
+    public Transform airAttack;
+    public GameObject airBullet;
 
     public override void Awake()
     {
         base.Awake();
+        idle = new HammerIdleState(this, stateMachine, "Idle", data);
+        move = new HammerMoveState(this, stateMachine,"Move",data);
+        jump = new HammerJumpState(this, stateMachine, "Jump", data);
+        air = new HammerAirState(this, stateMachine, "Jump", data);
+
+        attack1 = new HammerAttack1State(this, stateMachine, "Attack1", data, attackPos[0]);
+        attack4 = new HammerAttack1State(this, stateMachine, "Attack4", data, attackPos[3]);
+        meleeAttack2 = new HammerAttack2State(this, stateMachine, "Attack2", data, attackPos[1]);
+        meleeAttack3 = new HammerAttack2State(this, stateMachine, "Attack3", data, attackPos[2]);
+
+        openAttack = new List<EnemyAttackState>();
+        closeAttack = new List<EnemyAttackState>();
+
+
+        openAttack.Add(attack4);
+        openAttack.Add(attack1);
+
+        closeAttack.Add(meleeAttack3);
+        closeAttack.Add(attack4);
+        closeAttack.Add(meleeAttack2);
     }
     public override void Start()
     {
         base.Start();
-        idle = new HammerIdleState(this, stateMachine, "Idle", data);
-        move = new HammerMoveState(this, stateMachine,"Move",data);
+        stateMachine.Initialize(idle);
 
-        closeAttack.Add(new HammerAttack1State(this, stateMachine, "Attack1", data, attackPos[0]));
     }
 
     public override void FixedUpdate()
@@ -32,6 +60,18 @@ public class HammerManager : BossManager
     {
         base.Update();
     }
-    
+
+    public override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+        Gizmos.DrawWireSphere(transform.position, data.maxLookPlayerDistance);
+        Gizmos.color = Color.yellow;
+        for(int i=0;i<size.Count; i++)
+        {
+            Gizmos.DrawWireCube(attackPos[i].position, size[i]);
+        }
+        Gizmos.DrawLine(playerCheck.position, playerCheck.position + Vector3.right * facingDirection * data.maxDistanceAttack);
+    }
+
     
 }

@@ -24,4 +24,8 @@ public class EnemyData:ScriptableObject
     public float maxLookPlayerDistance;
     public float maxDistanceAttack;
 
+    [Header("Air State")]
+    public float coolDownTime;
+    public float force;
+
 }

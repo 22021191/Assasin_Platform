@@ -31,7 +31,8 @@ public class State
 
     public virtual void Exit()
     {
-        enemy.anim.SetBool(animName, false);
+        
+        _ExitState= true;
     }
 
     public virtual void LogicUpdate()
@@ -49,4 +50,6 @@ public class State
 
     }
     public virtual void AnimationFinishTrigger() => _ExitState = true;
+
+    public virtual void AnimationTrigger() { }
 }

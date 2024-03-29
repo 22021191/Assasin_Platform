@@ -15,6 +15,7 @@ public class HammerMoveState : EnemyMoveState
     public override void DoChecks()
     {
         base.DoChecks();
+        openAttack = hammer.CheckLongRangeAttack();
     }
 
     public override void Enter()
@@ -30,15 +31,19 @@ public class HammerMoveState : EnemyMoveState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if(canAttack )
+
+        hammer.CheckFlip(hammer.LookPlayer());
+        if (canAttack )
         {
             stateMachine.ChangeState(hammer.RandomAttack(hammer.closeAttack));
         }else if (openAttack)
         {
             stateMachine.ChangeState(hammer.RandomAttack(hammer.openAttack));
-        }else
+        }
+        else if (isTouchWall || !isTouchGround)
         {
-            hammer.CheckFlip();
+            hammer.idle.SetFlipAfterIdle(true);
+            stateMachine.ChangeState(hammer.idle);
         }
         
     }

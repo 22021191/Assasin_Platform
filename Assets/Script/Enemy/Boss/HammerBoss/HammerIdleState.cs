@@ -6,7 +6,6 @@ public class HammerIdleState : EnemyIdleState
 {
     private HammerManager hammer;
     private bool openAttack;
-    private bool closeAttack;
     public HammerIdleState(HammerManager enemy, FiniteStateMachine stateMachine, string animBoolName, EnemyData data) : base(enemy, stateMachine, animBoolName, data)
     {
         this.hammer = enemy;
@@ -21,7 +20,6 @@ public class HammerIdleState : EnemyIdleState
     {
         base.DoChecks();
         openAttack = hammer.CheckLongRangeAttack();
-        closeAttack=hammer.CheckCanAttack();
     }
 
     public override void Enter()
@@ -31,7 +29,8 @@ public class HammerIdleState : EnemyIdleState
 
     public override void Exit()
     {
-        base.Exit();
+        _ExitState = true;
+
     }
 
     public override void LogicUpdate()
@@ -39,7 +38,8 @@ public class HammerIdleState : EnemyIdleState
         base.LogicUpdate();
         if (_ExitState)
         {
-            if (closeAttack)
+
+            if (canAttack)
             {
                 stateMachine.ChangeState(hammer.RandomAttack(hammer.closeAttack));
             }

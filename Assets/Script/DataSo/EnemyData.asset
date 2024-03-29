@@ -27,4 +27,5 @@ MonoBehaviour:
   minIdleTime: 1
   maxIdleTime: 1.2
   speed: 4
-  maxLookPlayerDistance: 0
+  maxLookPlayerDistance: 1
+  maxDistanceAttack: 0

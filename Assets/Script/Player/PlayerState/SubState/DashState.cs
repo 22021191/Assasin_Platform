@@ -18,7 +18,7 @@ public class DashState : PlayerAbilityState
     public override void Enter()
     {
         base.Enter();
-
+        player.gameObject.layer = LayerMask.NameToLayer("Dash");
         player.input.UseDashInput();
 
         isHolding = true;
@@ -39,6 +39,8 @@ public class DashState : PlayerAbilityState
         {
             player.SetVelocityY(player._rb2d.velocity.y * data.dashEndYMultiplier);
         }
+        player.gameObject.layer = LayerMask.NameToLayer("Player");
+
     }
 
     public override void LogicUpdate()
