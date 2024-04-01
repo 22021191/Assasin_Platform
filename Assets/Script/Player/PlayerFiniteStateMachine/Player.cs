@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -28,6 +29,9 @@ public class Player : MonoBehaviour
     public Animator anim { get;private set; }
     public GameObject dashDirectionObj;
     public Weapon weapon;
+
+    [SerializeField] private Slider heathBar;
+    private DamgeReciver hp;
     #endregion
 
     #region State Value
@@ -49,6 +53,7 @@ public class Player : MonoBehaviour
     public WallJumpState wallJumpState;
     public LedgeClimbState ledge;
     public AttackState attack;
+    public PlayerDeathState death;
     #endregion
 
     private void Awake()
@@ -77,11 +82,15 @@ public class Player : MonoBehaviour
         wallJumpState = new WallJumpState(this, stateMachine, data, "WallJump");
         ledge = new LedgeClimbState(this, stateMachine, data, "Ledge");
         attack = new AttackState(this, stateMachine, data, "Attack");
+        death = new PlayerDeathState(this, stateMachine, data, "Death");
     }
 
     void Start()
     {
         stateMachine.Initialize(idleState);
+        hp = GetComponent<DamgeReciver>();
+        heathBar.maxValue=hp.hpMax;
+        heathBar.minValue = 0;
     }
 
     
@@ -89,6 +98,12 @@ public class Player : MonoBehaviour
     {
         curVerlocity=_rb2d.velocity;
         stateMachine.CurrentState.LogicUpdate();
+        heathBar.value = hp.hp;
+
+        if (hp.hp <= 0)
+        {
+            stateMachine.ChangeState(death);
+        }
     }
 
     private void FixedUpdate()
@@ -181,6 +196,12 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Other Functions
+
+    public void DestroyGameObject()
+    {
+        Destroy(gameObject,1f);
+    }
+
     private void Flip()
     {
         facingRight *= -1;

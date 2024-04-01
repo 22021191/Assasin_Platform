@@ -3,8 +3,8 @@
   <Class Name="State" Collapsed="true">
     <Position X="12.75" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAwABAAAACAAAAAAAAkAAAAAAAEAAAAIAAQAAEAABI=</HashCode>
-      <FileName>Assets\Script\Enemy\StateMachine\State.cs</FileName>
+      <HashCode>AAAwABAAAACAAAAAAIAkAAAAAAAEAAAAIAAQAAEAABI=</HashCode>
+      <FileName>Assets\Script\Enemy\BaseEnemy\StateMachine\State.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MeleeAttack" Collapsed="true">
@@ -59,14 +59,14 @@
   <Class Name="FlyEnemy" Collapsed="true">
     <Position X="19.5" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAiAAQACAAAAAAAAAAAAAAACAAAAAAAkAAEI=</HashCode>
+      <HashCode>AAQAAEAAAiAAQAGAAAAAAAAAAAAAAACAAAAAAAkAAEI=</HashCode>
       <FileName>Assets\Script\Enemy\FlyEnemy\FlyEnemy.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FlyIdleState" Collapsed="true">
     <Position X="16" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQABAAAAAAAAAAAAAEAAAAAAAFAAAAIAAAAAEAAQA=</HashCode>
+      <HashCode>AAAQABAAAAAAAAAAAAAEAAAAAAAEAAAAIAAAAAEAAQA=</HashCode>
       <FileName>Assets\Script\Enemy\FlyEnemy\FlyIdleState.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -85,7 +85,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PlantEnemy" Collapsed="true">
-    <Position X="19.5" Y="9.5" Width="1.5" />
+    <Position X="4.5" Y="13.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAiIABAIAAAAAAAAAAABAAAAAABAgAAAAAEQ=</HashCode>
       <FileName>Assets\Script\Enemy\PlantShootEnemy\PlantEnemy.cs</FileName>
@@ -109,28 +109,98 @@
     <Position X="7.25" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABQABAAAAAAAAAAAAAEAAAAAAAEAAAAIAAAAAAIAAA=</HashCode>
-      <FileName>Assets\Script\Enemy\StateEnemy\EnemyAttackState.cs</FileName>
+      <FileName>Assets\Script\Enemy\BaseEnemy\StateEnemy\EnemyAttackState.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EnemyIdleState" Collapsed="true">
     <Position X="12.75" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAQABAAAAAAAAABAAAEACAQAAAEAAAAIAAAAAAQAAA=</HashCode>
-      <FileName>Assets\Script\Enemy\StateEnemy\EnemyIdleState.cs</FileName>
+      <FileName>Assets\Script\Enemy\BaseEnemy\StateEnemy\EnemyIdleState.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EnemyMoveState" Collapsed="true">
     <Position X="12.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAQABAAAAAAAAAAAAAEACAAAAAEAAAAIAAgIAAAAAA=</HashCode>
-      <FileName>Assets\Script\Enemy\StateEnemy\EnemyMoveState.cs</FileName>
+      <FileName>Assets\Script\Enemy\BaseEnemy\StateEnemy\EnemyMoveState.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StunState" Collapsed="true">
     <Position X="8" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAQABAAAAAAAAAAAAAEACAAAAAEAAAIIAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Script\Enemy\StateEnemy\StunState.cs</FileName>
+      <FileName>Assets\Script\Enemy\BaseEnemy\StateEnemy\StunState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HammerAirState" Collapsed="true">
+    <Position X="36.75" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAIAAAAAAkAAACBAAEACAAIAAAAAAAAAg=</HashCode>
+      <FileName>Assets\Script\Enemy\Boss\HammerBoss\HammerAirState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HammerAttack1State" Collapsed="true">
+    <Position X="16.75" Y="19" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAgAAAAAEAAAAIAAAgAEBAAA=</HashCode>
+      <FileName>Assets\Script\Enemy\Boss\HammerBoss\HammerAttack1State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HammerAttack2State" Collapsed="true">
+    <Position X="14" Y="19" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAAAAIAEAAAAAAAEAAAAIAAAAAEIAAA=</HashCode>
+      <FileName>Assets\Script\Enemy\Boss\HammerBoss\HammerAttack2State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HammerAttackBase" Collapsed="true">
+    <Position X="15.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABABAAAAAAAAAIAEAAAABAAEAAAAIAAQAAEIAAg=</HashCode>
+      <FileName>Assets\Script\Enemy\Boss\HammerBoss\HammerAttackBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HammerIdleState" Collapsed="true">
+    <Position X="23.25" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAAAAAAEAAAAAAAEAAAAIAAAAAEAABg=</HashCode>
+      <FileName>Assets\Script\Enemy\Boss\HammerBoss\HammerIdleState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HammerJumpState" Collapsed="true">
+    <Position X="39" Y="17.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAIAAAAAAEAAAAAAAEAAAAAAAAAAIAAAg=</HashCode>
+      <FileName>Assets\Script\Enemy\Boss\HammerBoss\HammerJumpState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HammerManager" Collapsed="true">
+    <Position X="15.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQGAAAAAiABQCCAAIAAAABIAAAABAAAAAAAABAAAEA=</HashCode>
+      <FileName>Assets\Script\Enemy\Boss\HammerBoss\HammerManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HammerMoveState" Collapsed="true">
+    <Position X="24.25" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAAAAAAEAAAAAAAEAAAAIAAAAAAAABg=</HashCode>
+      <FileName>Assets\Script\Enemy\Boss\HammerBoss\HammerMoveState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BossInAirState" Collapsed="true">
+    <Position X="36.75" Y="17.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAEAAAAAAAEAAAIIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Script\Enemy\Boss\BossInAirState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BossManager" Collapsed="true">
+    <Position X="15.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQgEAEAiAAAAAAgIAAAAAAAAAAAAAAAAAAAAMAAFA=</HashCode>
+      <FileName>Assets\Script\Enemy\Boss\BossManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

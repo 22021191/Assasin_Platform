@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50c9983b33b385a47aa3a8f4b50bcc89, type: 3}
   m_Name: WeaponData
   m_EditorClassIdentifier: 
-  amountOfAttacks: 0
+  amountOfAttacks: 5
   movementSpeed: 0
   attackSpeed: 0
   attackDistance: 0.75

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class HammerAttack1State : HammerAttackBase
 {
-    private Vector2 sizeAttack;
     private float coolDownTimer;
-    public HammerAttack1State(HammerManager enemy, FiniteStateMachine stateMachine, string animBoolName, EnemyData data, Transform attackPos) : base(enemy, stateMachine, animBoolName, data, attackPos)
+    private float timeAttack;
+    public HammerAttack1State(HammerManager enemy, FiniteStateMachine stateMachine, string animBoolName, EnemyData data, Transform attackPos,int index) : base(enemy, stateMachine, animBoolName, data, attackPos,index)
     {
+        coolDownTimer=data.coolDownTime;
     }
 
     public override void AnimationFinishTrigger()
@@ -17,13 +18,16 @@ public class HammerAttack1State : HammerAttackBase
 
     public override void Enter()
     {
+        isAttack = false;
         base.Enter();
+        timeAttack = 0;
         
     }
 
     public override void Exit()
     {
         base.Exit();
+        timeAttack = 0;
     }
 
     public override void LogicUpdate()
@@ -37,11 +41,12 @@ public class HammerAttack1State : HammerAttackBase
 
     private void TakeDamage()
     {
-        Collider2D hit = Physics2D.OverlapBox(attackPosition.position, sizeAttack, 90, data._PlayerMask);
-        if (hit && Time.time >= startTime + coolDownTimer)
+        Collider2D hit = Physics2D.OverlapBox(attackPosition.position, sizeAttack,90, data._PlayerMask);
+        if (hit)
         {
-            startTime = Time.time;
-            //hammer.sender.Send(hit.transform);
+            isAttack = false;
+            timeAttack = Time.time;
+            hammer.sender.Send(hit.transform);
         }
     }
 }

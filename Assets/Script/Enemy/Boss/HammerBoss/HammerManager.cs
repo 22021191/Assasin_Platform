@@ -15,10 +15,9 @@ public class HammerManager : BossManager
     private HammerAttack2State meleeAttack2;
     private HammerAttack2State meleeAttack3;
 
-    [SerializeField] private List<Vector3> size;
-    public Transform airAttack;
-    public GameObject airBullet;
-
+    public List<Vector3> size;
+    public Bullet airAttack;
+    
     public override void Awake()
     {
         base.Awake();
@@ -27,10 +26,10 @@ public class HammerManager : BossManager
         jump = new HammerJumpState(this, stateMachine, "Jump", data);
         air = new HammerAirState(this, stateMachine, "Jump", data);
 
-        attack1 = new HammerAttack1State(this, stateMachine, "Attack1", data, attackPos[0]);
-        attack4 = new HammerAttack1State(this, stateMachine, "Attack4", data, attackPos[3]);
-        meleeAttack2 = new HammerAttack2State(this, stateMachine, "Attack2", data, attackPos[1]);
-        meleeAttack3 = new HammerAttack2State(this, stateMachine, "Attack3", data, attackPos[2]);
+        attack1 = new HammerAttack1State(this, stateMachine, "Attack1", data, attackPos[0],0);
+        attack4 = new HammerAttack1State(this, stateMachine, "Attack4", data, attackPos[3],3);
+        meleeAttack2 = new HammerAttack2State(this, stateMachine, "Attack2", data, attackPos[1],1);
+        meleeAttack3 = new HammerAttack2State(this, stateMachine, "Attack3", data, attackPos[2],2);
 
         openAttack = new List<EnemyAttackState>();
         closeAttack = new List<EnemyAttackState>();
@@ -59,6 +58,7 @@ public class HammerManager : BossManager
     public override void Update()
     {
         base.Update();
+       
     }
 
     public override void OnDrawGizmos()
@@ -74,4 +74,5 @@ public class HammerManager : BossManager
     }
 
     
+   
 }

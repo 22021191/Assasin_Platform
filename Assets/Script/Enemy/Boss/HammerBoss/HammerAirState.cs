@@ -23,12 +23,13 @@ public class HammerAirState : BossInAirState
     {
         base.Enter();
         direction = hammer.facingDirection;
-       
+        hammer.rb2d.gravityScale = 2;
     }
 
     public override void Exit()
     {
         base.Exit();
+        hammer.rb2d.gravityScale = 1;
     }
 
     public override void PhysicsUpdate()
@@ -43,7 +44,7 @@ public class HammerAirState : BossInAirState
 
     private void AirAttack()
     {
-
+        hammer.airAttack.gameObject.SetActive(true);
     }
 
     public override void LogicUpdate()
@@ -61,6 +62,10 @@ public class HammerAirState : BossInAirState
         else
         {
             hammer.SetVelocityX(direction*data.speed);
+            if(hammer.rb2d.velocity.y<0)
+            {
+                hammer.rb2d.gravityScale = 7;
+            }
             
         }
     }

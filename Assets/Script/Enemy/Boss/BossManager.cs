@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossManager : Enemy
 {
@@ -8,9 +9,13 @@ public class BossManager : Enemy
     public List<EnemyAttackState> closeAttack;
     public List<EnemyAttackState> openAttack;
 
+    [SerializeField] private Slider heathBar;
+
     public override void Awake()
     {
         base.Awake();
+        heathBar.maxValue = data.maxHealth;
+        heathBar.minValue = 0;
     }
 
     public override void FixedUpdate()
@@ -27,6 +32,7 @@ public class BossManager : Enemy
     {
         base.Update();
         LookPlayer();
+        heathBar.value = reciver.hp;
     }
 
     public bool CheckLongRangeAttack()

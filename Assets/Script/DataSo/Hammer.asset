@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd346f229961ac64aa97ca71aa976090, type: 3}
   m_Name: Hammer
   m_EditorClassIdentifier: 
-  maxHealth: 30
+  maxHealth: 100
   damageHopSpeed: 3
-  damgeAttack: 0
+  damgeAttack: 6
   attackDistance: 1.5
   wallCheckDistance: 0.5
   groundCheckRadius: 0.3
@@ -24,8 +24,8 @@ MonoBehaviour:
   _PlayerMask:
     serializedVersion: 2
     m_Bits: 128
-  minIdleTime: 1
-  maxIdleTime: 1.2
+  minIdleTime: 0.5
+  maxIdleTime: 0.75
   speed: 4
   maxLookPlayerDistance: 16
   maxDistanceAttack: 8

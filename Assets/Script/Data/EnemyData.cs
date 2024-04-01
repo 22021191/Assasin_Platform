@@ -8,7 +8,7 @@ public class EnemyData:ScriptableObject
     [Header("Damge")]
     public int maxHealth = 30;
     public float damageHopSpeed = 3f;
-    public float damgeAttack;
+    public int damgeAttack;
     public float attackDistance;
 
     [Header("Collider")]

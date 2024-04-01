@@ -15,6 +15,13 @@ public class DamgeReciver : MonoBehaviour
         this.isDead = false;
     }
 
+    public virtual void Reborn(int max)
+    {
+        this.hpMax= max;
+        this.hp= max;
+        this.isDead = false;
+    }
+
     public virtual void Add(int add)
     {
         if (this.isDead) return;

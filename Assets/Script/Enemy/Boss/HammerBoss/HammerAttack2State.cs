@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class HammerAttack2State : HammerAttackBase
 {
-    public HammerAttack2State(HammerManager enemy, FiniteStateMachine stateMachine, string animBoolName, EnemyData data, Transform attackPos) : base(enemy, stateMachine, animBoolName, data, attackPos)
+
+    public HammerAttack2State(HammerManager enemy, FiniteStateMachine stateMachine, string animBoolName, EnemyData data, Transform attackPos,int index) : base(enemy, stateMachine, animBoolName, data, attackPos,index)
     {
     }
 
     public override void AnimationFinishTrigger()
     {
         base.AnimationFinishTrigger();
+        TriggerAttack();
     }
 
     public override void AnimationTrigger()
@@ -26,6 +28,7 @@ public class HammerAttack2State : HammerAttackBase
     public override void Enter()
     {
         base.Enter();
+       
     }
 
     public override void Exit()
@@ -47,5 +50,10 @@ public class HammerAttack2State : HammerAttackBase
     public override void TriggerAttack()
     {
         base.TriggerAttack();
+        Collider2D hit = Physics2D.OverlapBox(attackPosition.position, sizeAttack, 90, data._PlayerMask);
+        if(hit != null)
+        {
+            hammer.sender.Send(hit.transform);
+        }
     }
 }

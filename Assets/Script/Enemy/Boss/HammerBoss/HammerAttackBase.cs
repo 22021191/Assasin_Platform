@@ -8,10 +8,13 @@ public class HammerAttackBase : EnemyAttackState
     protected HammerManager hammer;
     protected bool isAttack;
     private float finishAttack;
+    protected Vector2 sizeAttack;
 
-    public HammerAttackBase(HammerManager enemy, FiniteStateMachine stateMachine, string animBoolName, EnemyData data, UnityEngine.Transform attackPos) : base(enemy, stateMachine, animBoolName, data, attackPos)
+
+    public HammerAttackBase(HammerManager enemy, FiniteStateMachine stateMachine, string animBoolName, EnemyData data, UnityEngine.Transform attackPos,int index) : base(enemy, stateMachine, animBoolName, data, attackPos)
     {
         this.hammer= enemy;
+        sizeAttack = hammer.size[index];
     }
 
     public override void AnimationFinishTrigger()
@@ -28,12 +31,14 @@ public class HammerAttackBase : EnemyAttackState
     {
         base.Enter();
         isAttack = false;
+        
     }
 
     public override void Exit()
     {
         base.Exit();
         finishAttack=Time.time;
+        isAttack = false;
         
     }
 
@@ -71,5 +76,6 @@ public class HammerAttackBase : EnemyAttackState
     protected bool CheckAttackCoolDown()
     {
         return finishAttack + data.coolDownTime > Time.time;
-    } 
+    }
+    
 }

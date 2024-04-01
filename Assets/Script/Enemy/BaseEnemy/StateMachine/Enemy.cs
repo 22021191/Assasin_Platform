@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     public bool isAttack;
     [SerializeField] public DamgeReciver reciver;
     [SerializeField] public DamgeSender sender;
+
+    private bool die=false;
     
     [Header("Check Collider")]
     [SerializeField]
@@ -22,11 +24,17 @@ public class Enemy : MonoBehaviour
     protected Transform playerCheck;
     [SerializeField]
     protected Transform groundCheck;
+
+    protected DeathState death;
     
     public virtual void Awake()
     {
+        reciver=gameObject.GetComponent<DamgeReciver>();
+        reciver.Reborn(data.maxHealth);
         anim = GetComponent<Animator>();
         stateMachine = new FiniteStateMachine();
+        sender = new DamgeSender(data.damgeAttack);
+        death = new DeathState(this, stateMachine, "Death", data);
     }
 
     public virtual void Start()
@@ -37,6 +45,11 @@ public class Enemy : MonoBehaviour
     public virtual void Update()
     {
         stateMachine.currentState.LogicUpdate();
+        if (reciver.hp <= 0&&!die)
+        {
+            die = true;
+            stateMachine.ChangeState(death);
+        }
     }
 
     public virtual void FixedUpdate()
@@ -94,5 +107,10 @@ public class Enemy : MonoBehaviour
         anim.ResetTrigger(AnimName);
         animName = AnimName;
         anim.SetTrigger(AnimName);
+    }
+
+    public void DestroyGameObject()
+    {
+        Destroy(gameObject,2);
     }
 }
