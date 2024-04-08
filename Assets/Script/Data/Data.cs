@@ -44,10 +44,7 @@ public class Data : ScriptableObject
     public float dashSpeed = 15f;
     public float dashLength = .3f;
     public float dashCounter = .5f;
-    public float holdTimeScale = 0.25f;
-    public float maxHoldTime;
-    public float dashDrag;
-    public float dashEndYMultiplier;
+    
 
     [Header("Ledge Climb")]
     public float ledgeDistance;

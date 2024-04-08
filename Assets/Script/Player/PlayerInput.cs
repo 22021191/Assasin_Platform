@@ -42,6 +42,7 @@ public class PlayerInput : MonoBehaviour
 
     public void DashInput()
     {
+        dashInput = false;
         if (Input.GetKeyDown(KeyCode.L))
         {
             dashInput = true;

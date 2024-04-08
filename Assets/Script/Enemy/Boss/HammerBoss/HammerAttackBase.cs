@@ -45,6 +45,11 @@ public class HammerAttackBase : EnemyAttackState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+        if (hammer.die)
+        {
+            stateMachine.ChangeState(hammer.death);
+            return;
+        }
         if (_ExitState)
         {
             stateMachine.ChangeState(hammer.idle);

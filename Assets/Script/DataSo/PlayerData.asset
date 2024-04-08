@@ -35,11 +35,8 @@ MonoBehaviour:
   crouchColliderHeight: 1
   dashSpeed: 40
   dashLength: 0.2
-  dashCounter: 0.5
-  holdTimeScale: 0.25
-  maxHoldTime: 1
-  dashDrag: 0
-  dashEndYMultiplier: 0
+  dashCounter: 2
   ledgeDistance: 0.2
   startOffset: {x: 0.5, y: 1}
   stopOffset: {x: 0.5, y: 0.8}
+  comboCount: 0

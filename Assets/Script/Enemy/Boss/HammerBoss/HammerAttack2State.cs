@@ -34,7 +34,7 @@ public class HammerAttack2State : HammerAttackBase
     public override void Exit()
     {
         base.Exit();
-        TriggerAttack();
+       
     }
 
     public override void LogicUpdate()

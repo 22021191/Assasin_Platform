@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     [Header("Component")]
     public Rigidbody2D _rb2d;
     public CapsuleCollider2D collider;
+    private DamgeReciver hp;
+    public Ghost ghost;
 
     [Header("Check Value")]
     [SerializeField] private GameObject groundCheck;
@@ -27,11 +29,9 @@ public class Player : MonoBehaviour
     public float _horizontalSpeed;
     public PlayerInput input;
     public Animator anim { get;private set; }
-    public GameObject dashDirectionObj;
     public Weapon weapon;
 
     [SerializeField] private Slider heathBar;
-    private DamgeReciver hp;
     #endregion
 
     #region State Value
@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
         _rb2d= GetComponent<Rigidbody2D>();
         input= GetComponent<PlayerInput>();
         collider = GetComponent<CapsuleCollider2D>();
+        ghost= GetComponent<Ghost>();
 
         //Khoi tao StateMachine
         stateMachine =new PlayerStateMachine();

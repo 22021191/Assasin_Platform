@@ -30,6 +30,11 @@ public class HammerAirState : BossInAirState
     {
         base.Exit();
         hammer.rb2d.gravityScale = 1;
+
+        if (CheckAirAttack())
+        {
+            AirAttack();
+        }
     }
 
     public override void PhysicsUpdate()
@@ -52,11 +57,6 @@ public class HammerAirState : BossInAirState
         base.LogicUpdate();
         if(isGrounded)
         {
-           
-            if (CheckAirAttack())
-            {
-                AirAttack();
-            }
             stateMachine.ChangeState(hammer.idle);
         }
         else

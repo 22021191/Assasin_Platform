@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public DamgeReciver reciver;
     [SerializeField] public DamgeSender sender;
 
-    private bool die=false;
+    public bool die=false;
     
     [Header("Check Collider")]
     [SerializeField]
@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected Transform groundCheck;
 
-    protected DeathState death;
+    public DeathState death;
     
     public virtual void Awake()
     {
@@ -45,10 +45,11 @@ public class Enemy : MonoBehaviour
     public virtual void Update()
     {
         stateMachine.currentState.LogicUpdate();
-        if (reciver.hp <= 0&&!die)
+        if (reciver.hp <= 5&&!die)
         {
             die = true;
             stateMachine.ChangeState(death);
+            return;
         }
     }
 
