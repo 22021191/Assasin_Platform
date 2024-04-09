@@ -28,6 +28,6 @@ MonoBehaviour:
   maxIdleTime: 0.75
   speed: 4
   maxLookPlayerDistance: 16
-  maxDistanceAttack: 8
+  maxDistanceAttack: 7.36
   coolDownTime: 2
   force: 18

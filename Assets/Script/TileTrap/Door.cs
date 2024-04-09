@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class Door : MonoBehaviour
 {
     [SerializeField] private Transform nextZoomPos;
     [SerializeField] private Animator transitionAnim;
+    [SerializeField] private PlayableDirector playable;
     bool isTransition=false;
+
+
+    private void Start()
+    {
+        playable.Stop();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,6 +35,8 @@ public class Door : MonoBehaviour
         player.transform.position=nextZoomPos.position;
         transitionAnim.SetBool("Start", false);
         transitionAnim.SetBool("End", true);
+        yield return new WaitForSeconds(1f);
+        playable.Play();
 
     }
 }

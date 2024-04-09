@@ -12,31 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13743c3f28ae27e4eaab0a41f0a4d274, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  maxSpeed: 12
+  maxSpeed: 8
   acceleration: 90
   deceleration: 180
   _groundLinearDrag: 5
-  jumpForce: 25
+  jumpForce: 20
   airLinearDrag: 4
   fallMultiplier: 10
   jumpMultiplier: 5
   coyoteTime: 0.2
   groundRadius: 0.1
-  wallDistance: 0.8
+  wallDistance: 0.6
   groundMask:
     serializedVersion: 2
     m_Bits: 8
   sliceSpeed: 3
   climdSpeed: 3
   wallJumpTime: 0.3
-  wallJumpVelocity: 30
-  wallAngle: {x: 0.5, y: 1}
+  wallJumpVelocity: 15
+  wallAngle: {x: 0.5, y: 0.75}
   standColliderHeight: 2
   crouchColliderHeight: 1
   dashSpeed: 40
   dashLength: 0.2
   dashCounter: 2
-  ledgeDistance: 0.2
+  ledgeDistance: 0.6
   startOffset: {x: 0.5, y: 1}
   stopOffset: {x: 0.5, y: 0.8}
   comboCount: 0
