@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class Dialogue : MonoBehaviour
 {
@@ -10,13 +11,15 @@ public class Dialogue : MonoBehaviour
     public TMP_Text dialogueText;
     public List<string> dialogues;
     public float writingSpeed;
+    public bool endDialogue;
     [SerializeField] private int index;
     [SerializeField] private int charIndex;
     [SerializeField] private bool started;
     [SerializeField] private bool waitForNext;
-
+    
     private void Awake()
     {
+        endDialogue = false;
         ToggleIndicator(false);
         ToggleWindow(false);
     }
@@ -53,8 +56,9 @@ public class Dialogue : MonoBehaviour
     public void EndDialogue()
     {
         started = false;
-        StopAllCoroutines();
         ToggleWindow(false);
+        StopAllCoroutines();
+
     }
    
     IEnumerator Writing()
@@ -77,6 +81,13 @@ public class Dialogue : MonoBehaviour
         else
         {
             waitForNext = true;
+            
+            if(index==dialogues.Count-1)
+            {
+                yield return new WaitForSeconds(1f);
+                endDialogue = true;
+                EndDialogue();
+            }
         }
     }
 
@@ -101,5 +112,6 @@ public class Dialogue : MonoBehaviour
             }
         }
     }
+
 
 }

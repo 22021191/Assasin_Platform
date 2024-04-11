@@ -26,6 +26,7 @@ public class BossManager : Enemy
     public override void Start()
     {
         base.Start();
+        heathBar.gameObject.SetActive(false);
     }
 
     public override void Update()
@@ -81,5 +82,10 @@ public class BossManager : Enemy
     public void SetVelocity(Vector2 direction)
     {
         rb2d.velocity = direction*data.force;
+    }
+
+    public void EnableHeath()
+    {
+        heathBar.gameObject.SetActive(true);
     }
 }

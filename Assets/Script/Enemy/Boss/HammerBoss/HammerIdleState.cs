@@ -29,6 +29,8 @@ public class HammerIdleState : EnemyIdleState
 
     public override void Exit()
     {
+        base.Exit();
+        SetFlipAfterIdle(false);
         _ExitState = true;
 
     }
