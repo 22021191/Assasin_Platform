@@ -5,9 +5,12 @@ using UnityEngine;
 public class DamgeReciver : MonoBehaviour
 {
     [Header("Damage Receiver")]
+    [SerializeField] public int def;
+    [SerializeField] public int defence;
     [SerializeField] public int hp = 1;
     [SerializeField] public int hpMax = 2;
     [SerializeField] protected bool isDead = false;
+    public bool isDefence=false;
 
     public virtual void Reborn()
     {
@@ -33,7 +36,19 @@ public class DamgeReciver : MonoBehaviour
     public virtual void Deduct(int deduct)
     {
         if (this.isDead) return;
-
+        if (isDefence && def > 0)
+        {
+            this.def-= deduct;
+        }
+        if(def<0)
+        {
+            def = 0;
+            deduct = def;
+        }
+        else
+        {
+            return;
+        }
         this.hp -= deduct;
         if (this.hp < 0) this.hp = 0;
         this.CheckIsDead();

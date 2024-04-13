@@ -23,16 +23,9 @@ public class CrouchIdle : PlayerGroundState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
-        
-        if (inputX != 0)
-        {
-            stateMachine.ChangeState(player.crouchWalk);
-        }
-        else if (inputY != -1 && !isTouchingCeiling)
+        if (!player.input.crouchInput && !isTouchingCeiling)
         {
             stateMachine.ChangeState(player.idleState);
         }
-        
     }
 }

@@ -8,9 +8,7 @@ public class PlayerWallState : PlayerState
     protected bool isTouchingWall;
     protected int inputX;
     protected int inputY;
-    protected bool grabInput;
     protected bool jumpInput;
-    protected bool isTouchingLedge;
 
     public PlayerWallState(Player player, PlayerStateMachine stateMachine, Data playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
@@ -23,12 +21,7 @@ public class PlayerWallState : PlayerState
 
         isGrounded = player.GroundCheck();
         isTouchingWall = player.WallFrontCheck();
-        isTouchingLedge=player.LedgeCheck();
-
-        if (isTouchingWall && !isTouchingLedge)
-        {
-            player.ledge.SetDetectedPosition(player.transform.position);
-        }
+        
 
     }
 
@@ -47,7 +40,6 @@ public class PlayerWallState : PlayerState
         base.LogicUpdate();
         inputX = player.input.inputX;
         inputY = player.input.inputY;
-        grabInput=player.input.grabInput;
         jumpInput = player.input.jumpInput;
         if(player.input.dashInput)
         {
@@ -59,18 +51,15 @@ public class PlayerWallState : PlayerState
             player.wallJumpState.WallJumpDirection(isTouchingWall);
             stateMachine.ChangeState(player.wallJumpState);
         }
-        else if (isGrounded&&!grabInput)
+        else if (isGrounded)
         {
             stateMachine.ChangeState(player.idleState);
         }
-        else if (!isTouchingWall || (inputX != player.facingRight&&!grabInput))
+        else if (!isTouchingWall || (inputX != player.facingRight))
         {
             stateMachine.ChangeState(player.airState);
         }
-        else if (isTouchingWall && !isTouchingLedge)
-        {
-            stateMachine.ChangeState(player.ledge);
-        }
+       
     }
 
     public override void PhysicsUpdate()

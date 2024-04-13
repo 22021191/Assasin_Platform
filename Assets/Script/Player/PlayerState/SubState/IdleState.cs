@@ -38,7 +38,11 @@ public class IdleState : PlayerGroundState
         {
             stateMachine.ChangeState(player.attack);
         }
-        else if(inputY==-1)
+        else if (inputY == -1)
+        {
+            stateMachine.ChangeState(player.defence);
+        }
+        else if(player.input.crouchInput)
         {
             stateMachine.ChangeState(player.crouchIdle);
         }

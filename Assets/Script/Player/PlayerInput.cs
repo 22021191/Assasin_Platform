@@ -9,13 +9,13 @@ public class PlayerInput : MonoBehaviour
     public int inputX;
     public int inputY;
 
+    [Header("Crouch")]
+    public bool crouchInput;
+
     [Header("Dash")]
     public bool dashInput;
     public float dashInputStartTime;
     public float inputHoldTime;
-
-    [Header("Wall")]
-    public bool grabInput;
 
     [Header("Jump")]
     public bool jumpInput;
@@ -56,10 +56,6 @@ public class PlayerInput : MonoBehaviour
         return Input.GetKeyUp(KeyCode.L);
     }
 
-    public void GrabInput()
-    {
-        grabInput = Input.GetKey(KeyCode.O);
-    }
     public void UseDashInput() => dashInput = false;
 
     private void CheckDashInputHoldTime()
@@ -85,10 +81,21 @@ public class PlayerInput : MonoBehaviour
         canNextCombo = Time.time > attackInputStartTime + timeNextCombo;
     }
 
+    public void CrouchInput()
+    {
+        if (Input.GetKey(KeyCode.Q))
+        {
+            crouchInput = true;
+        }
+        else
+        {
+            crouchInput = false;
+        }
+    }
     private void Update()
     {
+        CrouchInput();
         MoveInput();
-        GrabInput();
         JumpInput();
         DashInput();
         AttackInput();

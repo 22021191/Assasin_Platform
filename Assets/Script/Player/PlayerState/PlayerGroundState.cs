@@ -10,7 +10,6 @@ public class PlayerGroundState : PlayerState
     protected bool onGround;
     protected bool isTouchingCeiling;
     protected bool isTouchingWall;
-    protected bool grabInput;
     protected bool dash;
     public PlayerGroundState(Player player, PlayerStateMachine stateMachine, Data playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
@@ -43,8 +42,6 @@ public class PlayerGroundState : PlayerState
         inputX = player.input.inputX;
         inputY= player.input.inputY;
         dash=player.input.dashInput;
-        grabInput=player.input.grabInput;
-
         if (player.input.jumpInput)
         {
             stateMachine.ChangeState(player.jumpState);
@@ -52,9 +49,6 @@ public class PlayerGroundState : PlayerState
         {
             player.airState.StartCoyoteTime();
             stateMachine.ChangeState(player.airState);
-        }else if(isTouchingWall&&grabInput)
-        {
-            stateMachine.ChangeState(player.wallGrabState);
         }
         else if (dash && player.dashState.CheckIfCanDash() && !isTouchingCeiling)
         {

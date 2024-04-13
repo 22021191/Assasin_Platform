@@ -40,9 +40,9 @@ public class MoveState : PlayerGroundState
         {
             stateMachine.ChangeState(player.attack);
         }
-        else if (inputY == -1)
+        else if (player.input.crouchInput)
         {
-            stateMachine.ChangeState(player.crouchWalk);
+            stateMachine.ChangeState(player.crouchIdle);
         }
     }
 

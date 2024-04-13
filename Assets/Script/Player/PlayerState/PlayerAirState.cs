@@ -8,7 +8,6 @@ public class PlayerAirState : PlayerState
     private int xInput;
     private bool jumpInput;
     private bool jumpInputStop;
-    private bool grabInput;
     private bool dashInput;
 
     //Checks
@@ -32,12 +31,7 @@ public class PlayerAirState : PlayerState
         isGrounded = player.GroundCheck();
         isTouchingWall = player.WallFrontCheck();
         isTouchingWallBack = player.WallCheckBack();
-        isTouchingLedge = player.LedgeCheck();
 
-        if (isTouchingWall && !isTouchingLedge)
-        {
-            player.ledge.SetDetectedPosition(player.transform.position);
-        }
     }
 
     public override void Enter()
@@ -64,7 +58,6 @@ public class PlayerAirState : PlayerState
         
         xInput = player.input.inputX;
         jumpInput = player.input.jumpInput;
-        grabInput = player.input.grabInput;
         dashInput = player.input.dashInput;
         if (player.input.attackInput)
         {
@@ -73,10 +66,6 @@ public class PlayerAirState : PlayerState
         else if (isGrounded && player._rb2d.velocity.y < 0.01f)
         {
             stateMachine.ChangeState(player.landState);
-        }
-        else if (isTouchingWall && !isTouchingLedge && !isGrounded)
-        {
-            stateMachine.ChangeState(player.wallClimbState);
         }
         else if (jumpInput && (isTouchingWall || isTouchingWallBack ))
         {
@@ -92,11 +81,7 @@ public class PlayerAirState : PlayerState
         {
             player.jumpState.doubleJump = false;
             stateMachine.ChangeState(player.jumpState);
-        }
-        else if (isTouchingWall && grabInput && isTouchingLedge)
-        {
-            stateMachine.ChangeState(player.wallGrabState);
-        }
+        }       
         else if (isTouchingWall && xInput == player.facingRight && player._rb2d.velocity.y <= 0)
         {
             stateMachine.ChangeState(player.wallSliceState);

@@ -17,9 +17,6 @@ public class WallSliceState : PlayerWallState
         }
 
         player.SetVelocityY(-data.sliceSpeed);
-        if(grabInput&&inputY==0)
-        {
-            stateMachine.ChangeState(player.wallGrabState);
-        }
+        
     }
 }

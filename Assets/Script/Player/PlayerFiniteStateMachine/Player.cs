@@ -12,15 +12,15 @@ public class Player : MonoBehaviour
     #region Value
     [Header("Component")]
     public Rigidbody2D _rb2d;
-    public CapsuleCollider2D collider;
-    private DamgeReciver hp;
+    public BoxCollider2D collider;
+    public DamgeReciver hp;
     public Ghost ghost;
 
     [Header("Check Value")]
     [SerializeField] private GameObject groundCheck;
     [SerializeField] private GameObject topCheck;
     [SerializeField] private GameObject wallCheck;
-    [SerializeField] private GameObject ledgeCheck;
+
 
     [Header("Variable")]
     private Vector2 workSpace;
@@ -46,13 +46,10 @@ public class Player : MonoBehaviour
     public JumpState jumpState;
     public LandState landState;
     public CrouchIdle crouchIdle;
-    public CrouchWalk crouchWalk;
     public DashState dashState;
-    public WallClimbState wallClimbState;
+    public PlayerDefence defence;
     public WallSliceState wallSliceState;
-    public WallGrabState wallGrabState;
     public WallJumpState wallJumpState;
-    public LedgeClimbState ledge;
     public AttackState attack;
     public PlayerDeathState death;
     #endregion
@@ -63,7 +60,7 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         _rb2d= GetComponent<Rigidbody2D>();
         input= GetComponent<PlayerInput>();
-        collider = GetComponent<CapsuleCollider2D>();
+        collider = GetComponent<BoxCollider2D>();
         ghost= GetComponent<Ghost>();
 
         //Khoi tao StateMachine
@@ -75,16 +72,13 @@ public class Player : MonoBehaviour
         airState = new PlayerAirState(this, stateMachine, data, "Jump");
         jumpState = new JumpState(this, stateMachine, data, "Jump");
         landState = new LandState(this, stateMachine, data, "Land");
-        crouchIdle = new CrouchIdle(this, stateMachine, data, "CrouchIdle");
-        crouchWalk = new CrouchWalk(this, stateMachine, data, "CrouchWalk");
+        crouchIdle = new CrouchIdle(this, stateMachine, data, "Crouch");
         dashState = new DashState(this, stateMachine, data, "Dash");
-        wallClimbState = new WallClimbState(this, stateMachine, data, "Climb");
-        wallGrabState = new WallGrabState(this, stateMachine, data, "Grab");
-        wallSliceState = new WallSliceState(this, stateMachine, data, "Slice");
-        wallJumpState = new WallJumpState(this, stateMachine, data, "WallJump");
-        ledge = new LedgeClimbState(this, stateMachine, data, "Ledge");
+        wallSliceState = new WallSliceState(this, stateMachine, data, "WallSlice");
+        wallJumpState = new WallJumpState(this, stateMachine, data, "Jump");
         attack = new AttackState(this, stateMachine, data, "Attack");
         death = new PlayerDeathState(this, stateMachine, data, "Death");
+        defence = new PlayerDefence(this, stateMachine, data, "Defence");
     }
 
     void Start()
@@ -170,11 +164,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public bool LedgeCheck()
-    {
-        return Physics2D.Raycast(ledgeCheck.transform.position, Vector2.right * facingRight, data.ledgeDistance, data.groundMask);
-    }
-
+    
     public bool GroundCheck()
     {
         return Physics2D.OverlapCircle(groundCheck.transform.position, data.groundRadius, data.groundMask);
@@ -219,18 +209,7 @@ public class Player : MonoBehaviour
         transform.Rotate(0, 180, 0);
     }
 
-    public Vector2 DetermineCornerPosition()
-    {
-        RaycastHit2D xHit = Physics2D.Raycast(wallCheck.transform.position, Vector2.right * facingRight, data.wallDistance, data.groundMask);
-        float xDist = xHit.distance;
-        workSpace.Set((xDist + 0.015f) * facingRight, 0f);
-        RaycastHit2D yHit = Physics2D.Raycast(ledgeCheck.transform.position + (Vector3)(workSpace), Vector2.down, ledgeCheck.transform.position.y - wallCheck.transform.position.y + 0.015f, data.groundMask);
-        float yDist = yHit.distance;
-
-        workSpace.Set(wallCheck.transform.position.x + (xDist * facingRight), ledgeCheck.transform.position.y - yDist);
-        return workSpace;
-    }
-
+   
     private void AnimationTrigger()
     {
         stateMachine.CurrentState.AnimationTrigger();
