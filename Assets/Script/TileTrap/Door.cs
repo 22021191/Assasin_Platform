@@ -23,6 +23,8 @@ public class Door : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            collision.gameObject.GetComponent<Player>().SetVelocityZero();
+
             if (!isTransition)
             {
                 StartCoroutine(TransitionScene(collision));
@@ -35,8 +37,7 @@ public class Door : MonoBehaviour
         transitionAnim.SetBool("Start", true);
         transitionAnim.SetBool("End",false);
         isTransition = true;
-        player.GetComponent<PlayerInput>().enabled = false;
-
+        
         yield return new WaitForSeconds(1.5f);
         player.transform.position=nextZoomPos.position;
         CameraController.Instance.SwitchingCamera(nextCam);

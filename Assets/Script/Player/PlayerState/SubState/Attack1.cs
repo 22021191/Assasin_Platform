@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackState : PlayerAbilityState
+public class Attack1 : PlayerAbilityState
 {
     private int xInput;
     private Weapon weapon;
     private bool _OnGround;
-    
-    public AttackState(Player player, PlayerStateMachine stateMachine, Data playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+
+    public Attack1(Player player, PlayerStateMachine stateMachine, Data playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
 
@@ -18,30 +18,21 @@ public class AttackState : PlayerAbilityState
         weapon = player.weapon;
         weapon.EnterWeapon();
         _OnGround = player.GroundCheck();
-        
     }
 
     public override void Exit()
     {
-        base.Exit();        
+        base.Exit();
         weapon.ExitWeapon();
-        player.input.attackInputStartTime=Time.time;
+        player.input.attackInputStartTime = Time.time;
     }
 
     public override void LogicUpdate()
     {
-        if(isAbilityDone)
-        {
-            stateMachine.ChangeState(player.transition);
-        }
-        if (!exitState)
-        {
-            player.SetVelocityX(1 * player.facingRight);
-
-        }
-
+       
+        base.LogicUpdate();
+        
     }
-
 
     public override void AnimationFinishTrigger()
     {

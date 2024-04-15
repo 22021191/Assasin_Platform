@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     public Weapon weapon;
 
     [SerializeField] private Slider heathBar;
+    [SerializeField] private Slider defBar;
     #endregion
 
     #region State Value
@@ -51,7 +52,9 @@ public class Player : MonoBehaviour
     public WallSliceState wallSliceState;
     public WallJumpState wallJumpState;
     public AttackState attack;
+    public Attack1 attack1;
     public PlayerDeathState death;
+    public TransitionAttack transition;
     #endregion
 
     private void Awake()
@@ -77,8 +80,10 @@ public class Player : MonoBehaviour
         wallSliceState = new WallSliceState(this, stateMachine, data, "WallSlice");
         wallJumpState = new WallJumpState(this, stateMachine, data, "Jump");
         attack = new AttackState(this, stateMachine, data, "Attack");
+        attack1 = new Attack1(this, stateMachine, data, "Attack1");
         death = new PlayerDeathState(this, stateMachine, data, "Death");
         defence = new PlayerDefence(this, stateMachine, data, "Defence");
+        transition = new TransitionAttack(this, stateMachine, data, "Trasition");
     }
 
     void Start()
@@ -87,6 +92,8 @@ public class Player : MonoBehaviour
         hp = GetComponent<DamgeReciver>();
         heathBar.maxValue=hp.hpMax;
         heathBar.minValue = 0;
+        defBar.maxValue = hp.defence;
+        defBar.minValue = 0;
     }
 
     
@@ -95,6 +102,7 @@ public class Player : MonoBehaviour
         curVerlocity=_rb2d.velocity;
         stateMachine.CurrentState.LogicUpdate();
         heathBar.value = hp.hp;
+        defBar.value= hp.def;
 
         if (hp.hp <= 0)
         {

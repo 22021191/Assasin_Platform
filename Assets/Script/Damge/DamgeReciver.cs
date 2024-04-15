@@ -36,19 +36,22 @@ public class DamgeReciver : MonoBehaviour
     public virtual void Deduct(int deduct)
     {
         if (this.isDead) return;
-        if (isDefence && def > 0)
+
+        if (isDefence)
         {
-            this.def-= deduct;
+            this.def -= deduct;
+            if (def < 0)
+            {
+                deduct = -def;
+                def = 0;
+            }
+            else
+            {
+                return;
+            }
+
         }
-        if(def<0)
-        {
-            def = 0;
-            deduct = def;
-        }
-        else
-        {
-            return;
-        }
+
         this.hp -= deduct;
         if (this.hp < 0) this.hp = 0;
         this.CheckIsDead();
