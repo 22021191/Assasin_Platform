@@ -21,6 +21,7 @@ public class JumpState :PlayerAbilityState
     {
         base.Enter();
         player.SetVelocityY(data.jumpForce);
+        player.jumpDust.Play();
         isAbilityDone = true;
     }
 

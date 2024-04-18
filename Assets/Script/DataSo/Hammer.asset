@@ -20,7 +20,7 @@ MonoBehaviour:
   groundCheckRadius: 0.3
   _GroundMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1032
   _PlayerMask:
     serializedVersion: 2
     m_Bits: 128

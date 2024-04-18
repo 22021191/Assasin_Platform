@@ -8,6 +8,18 @@ public class WallSliceState : PlayerWallState
     {
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+        player.slideDust.Play();
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        player.slideDust.Stop();
+    }
+
     public override void LogicUpdate()
     {
         base.LogicUpdate();

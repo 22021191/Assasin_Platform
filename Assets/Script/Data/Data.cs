@@ -22,6 +22,7 @@ public class Data : ScriptableObject
 
     [Header("Collider Check")]
     public float groundRadius;
+    public Vector3 _groundRaycastOffset;
     public float wallDistance;
     public LayerMask groundMask;
 

@@ -15,11 +15,14 @@ public class Player : MonoBehaviour
     public BoxCollider2D collider;
     public DamgeReciver hp;
     public Ghost ghost;
+    public ParticleSystem dustMove;
+    public ParticleSystem jumpDust;
+    public ParticleSystem slideDust;
 
     [Header("Check Value")]
-    [SerializeField] private GameObject groundCheck;
-    [SerializeField] private GameObject topCheck;
-    [SerializeField] private GameObject wallCheck;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private Transform topCheck;
+    [SerializeField] private Transform wallCheck;
 
 
     [Header("Variable")]
@@ -31,6 +34,7 @@ public class Player : MonoBehaviour
     public PlayerInput input;
     public Animator anim { get;private set; }
     public Weapon weapon;
+    public int curHeath;
 
     [SerializeField] private Slider heathBar;
     [SerializeField] private Slider defBar;
@@ -44,6 +48,7 @@ public class Player : MonoBehaviour
     public IdleState idleState;
     public MoveState moveState;
     public PlayerAirState airState;
+    public HurtState hurt;
     public JumpState jumpState;
     public LandState landState;
     public CrouchIdle crouchIdle;
@@ -81,16 +86,19 @@ public class Player : MonoBehaviour
         wallJumpState = new WallJumpState(this, stateMachine, data, "Jump");
         attack = new AttackState(this, stateMachine, data, "Attack");
         attack1 = new Attack1(this, stateMachine, data, "Attack1");
-        death = new PlayerDeathState(this, stateMachine, data, "Death");
+        death = new PlayerDeathState(this, stateMachine, data, "Die");
         defence = new PlayerDefence(this, stateMachine, data, "Defence");
         transition = new TransitionAttack(this, stateMachine, data, "Trasition");
+        hurt = new HurtState(this, stateMachine, data, "Hurt");
     }
 
     void Start()
     {
+        slideDust.Stop();
         stateMachine.Initialize(idleState);
         hp = GetComponent<DamgeReciver>();
         heathBar.maxValue=hp.hpMax;
+        curHeath = hp.hpMax;
         heathBar.minValue = 0;
         defBar.maxValue = hp.defence;
         defBar.minValue = 0;
@@ -101,13 +109,9 @@ public class Player : MonoBehaviour
     {
         curVerlocity=_rb2d.velocity;
         stateMachine.CurrentState.LogicUpdate();
-        heathBar.value = hp.hp;
+        heathBar.value = curHeath;
         defBar.value= hp.def;
 
-        if (hp.hp <= 0)
-        {
-            stateMachine.ChangeState(death);
-        }
     }
 
     private void FixedUpdate()
@@ -175,19 +179,19 @@ public class Player : MonoBehaviour
     
     public bool GroundCheck()
     {
-        return Physics2D.OverlapCircle(groundCheck.transform.position, data.groundRadius, data.groundMask);
+        return Physics2D.Raycast(groundCheck.position + data._groundRaycastOffset, Vector2.down, data.groundRadius, data.groundMask) ||
+                    Physics2D.Raycast(groundCheck.position - data._groundRaycastOffset, Vector2.down, data.groundRadius, data.groundMask);
+
     }
 
     public bool WallFrontCheck()
     {
-        return Physics2D.Raycast(wallCheck.transform.position, Vector2.right * facingRight, data.wallDistance,data.groundMask);
-
+        return Physics2D.Raycast(wallCheck.position, Vector2.left, data.wallDistance, data.groundMask);
     }
 
     public bool WallCheckBack()
     {
-        return Physics2D.Raycast(wallCheck.transform.position, Vector2.right * -1*facingRight, data.wallDistance, data.groundMask);
-
+        return Physics2D.Raycast(wallCheck.position, Vector2.right, data.wallDistance, data.groundMask);
     }
     public bool TopCheck()
     {
@@ -215,6 +219,7 @@ public class Player : MonoBehaviour
     {
         facingRight *= -1;
         transform.Rotate(0, 180, 0);
+       
     }
 
    
@@ -237,6 +242,18 @@ public class Player : MonoBehaviour
         anim.ResetTrigger(AnimName);
         changeAnimName = AnimName;
         anim.SetTrigger(AnimName);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+
+        //Ground Check
+        Gizmos.DrawLine(groundCheck.position + data._groundRaycastOffset, groundCheck.position + data._groundRaycastOffset + Vector3.down * data.groundRadius);
+        Gizmos.DrawLine(groundCheck.position - data._groundRaycastOffset, groundCheck.position - data._groundRaycastOffset + Vector3.down * data.groundRadius);
+        //Wall Check
+        Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.right * data.wallDistance);
+        Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.left * data.wallDistance);
     }
     #endregion
 }

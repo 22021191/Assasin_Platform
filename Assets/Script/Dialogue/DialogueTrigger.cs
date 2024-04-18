@@ -7,9 +7,12 @@ public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogueScript;
     private bool playerDetected;
+    [SerializeField] private bool isBoss;
+    [SerializeField] private BossManager bossManager;
     [SerializeField] private Transform nextZoomPos;
     [SerializeField] private CinemachineVirtualCamera nextCam;
     [SerializeField] private Animator transitionAnim;
+    [SerializeField] private GameObject col1, col2;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,7 +31,23 @@ public class DialogueTrigger : MonoBehaviour
         if (dialogueScript.endDialogue)
         {
             dialogueScript.endDialogue = false;
-            StartCoroutine(TransitionScene(collision));
+            if (isBoss)
+            {
+                gameObject.layer = LayerMask.NameToLayer("Enemy");
+                gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+                gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+                bossManager.enabled = true;
+                bossManager.EnableHeath();
+                col1.SetActive(true);
+                col2.SetActive(true);
+                this.enabled = false;
+               
+            }
+            else
+            {
+                StartCoroutine(TransitionScene(collision));
+            }
+
         }
     }
 
@@ -41,10 +60,20 @@ public class DialogueTrigger : MonoBehaviour
             dialogueScript.EndDialogue();
         }
     }
-    
+    private void Start()
+    {
+        if(isBoss)
+        {
+            bossManager.enabled=false;
+        }
+    }
     private void Update()
     {
-        if (playerDetected && Input.GetKeyDown(KeyCode.E))
+        if (dialogueScript.endDialogue)
+        {
+            return;
+        }
+        else if (playerDetected && Input.GetKeyDown(KeyCode.E))
         {
             dialogueScript.StartDialogue();
         }
@@ -64,4 +93,5 @@ public class DialogueTrigger : MonoBehaviour
         transitionAnim.SetBool("End", true);
 
     }
+
 }

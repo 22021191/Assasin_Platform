@@ -11,11 +11,11 @@ public class BossManager : Enemy
 
     [SerializeField] private Slider heathBar;
 
+   
     public override void Awake()
     {
         base.Awake();
-        heathBar.maxValue = data.maxHealth;
-        heathBar.minValue = 0;
+        SetHeathBar();
     }
 
     public override void FixedUpdate()
@@ -84,8 +84,14 @@ public class BossManager : Enemy
         rb2d.velocity = direction*data.force;
     }
 
-    public void EnableHeath()
+    public virtual void EnableHeath()
     {
         heathBar.gameObject.SetActive(true);
+    }
+
+    public void SetHeathBar()
+    {
+        heathBar.maxValue = data.maxHealth;
+        heathBar.minValue = 0;
     }
 }

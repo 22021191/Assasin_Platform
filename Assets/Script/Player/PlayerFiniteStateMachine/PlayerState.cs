@@ -35,7 +35,10 @@ public class PlayerState
 
     public virtual void LogicUpdate()
     {
-
+        if (player.hp.hp! < player.curHeath)
+        {
+            stateMachine.ChangeState(player.hurt);
+        }
     }
 
     public virtual void PhysicsUpdate()

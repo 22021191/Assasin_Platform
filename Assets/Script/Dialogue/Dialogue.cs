@@ -84,8 +84,8 @@ public class Dialogue : MonoBehaviour
             
             if(index==dialogues.Count-1)
             {
-                yield return new WaitForSeconds(1f);
                 endDialogue = true;
+                yield return new WaitForSeconds(1f);
                 EndDialogue();
             }
         }

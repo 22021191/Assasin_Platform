@@ -12,6 +12,7 @@ public class MoveState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
+        player.dustMove.Play();
     }
 
     public override void Exit()

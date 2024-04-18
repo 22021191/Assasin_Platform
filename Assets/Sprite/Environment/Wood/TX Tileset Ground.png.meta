@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 066354d1a48a2d148b0b53df0920ea5e
+guid: 8a94ddc71b989884f83f68aa2b142e31
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: desert-ruins_0
+      name: TX Tileset Ground_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 112
-        width: 16
-        height: 16
+        x: 0
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb0a4ef8ffc0b904abcd5fa5f786d705
-      internalID: -1113871114
+      spriteID: 80a9b523b44317049b7303e3d4d4fcd2
+      internalID: -2123750997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-ruins_1
+      name: TX Tileset Ground_1
       rect:
         serializedVersion: 2
         x: 32
-        y: 112
-        width: 16
-        height: 16
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,41 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aaec96794a850a749a3a4f08e18a01a4
-      internalID: -441470171
+      spriteID: 9f03a484d541c274c9d0db5848210e7b
+      internalID: 1566605104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-ruins_2
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 112
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cda2d096b8e60f64a8aed11ba697bebc
-      internalID: -1588723369
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: desert-ruins_3
+      name: TX Tileset Ground_2
       rect:
         serializedVersion: 2
         x: 64
-        y: 112
-        width: 16
-        height: 16
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,41 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ccdec83b17575b245809c3eadf201c55
-      internalID: -335326175
+      spriteID: 70440be182a955347a2c0afe75153055
+      internalID: 965767911
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-ruins_4
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 112
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db7c9c0c8db9bf64e8f33477de75c56e
-      internalID: 912443530
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: desert-ruins_5
+      name: TX Tileset Ground_3
       rect:
         serializedVersion: 2
         x: 96
-        y: 112
-        width: 16
-        height: 16
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,20 +194,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84cb6c8b12515f7488b1141876bb9242
-      internalID: 1650654782
+      spriteID: 3d0c60a753fc45a4b90abb8d2fd88831
+      internalID: 1170529023
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-ruins_6
+      name: TX Tileset Ground_4
       rect:
         serializedVersion: 2
-        x: 112
-        y: 112
-        width: 16
-        height: 16
+        x: 160
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,20 +215,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a4b5df7cd8e4634ca2e6d5cd725be13
-      internalID: -174061748
+      spriteID: 8a1c734b8965eca4aacfb246f7d99473
+      internalID: 625319245
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-ruins_7
+      name: TX Tileset Ground_5
       rect:
         serializedVersion: 2
-        x: 16
-        y: 96
-        width: 16
-        height: 16
+        x: 192
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,20 +236,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f00fe8d99fb1cb4d9aeae469d82eb8c
-      internalID: -1054863406
+      spriteID: 58db3cb403b45d94d95897873d4fc282
+      internalID: 1382808307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-ruins_8
+      name: TX Tileset Ground_6
       rect:
         serializedVersion: 2
-        x: 32
-        y: 96
-        width: 16
-        height: 16
+        x: 0
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,125 +257,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a71b7a6ef8ab8e04d87f34af96a9b92e
-      internalID: -945449491
+      spriteID: 0573dac14e2dd554c956185fa4eb4806
+      internalID: -141514542
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-ruins_9
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 40c6c31a83c611c46accc28c99eee7a5
-      internalID: 1992426347
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: desert-ruins_10
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 44cb5d69ab14c2a43b4374b01d223e9f
-      internalID: -1794097584
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: desert-ruins_11
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a99df3094b077a1419f83ef37db71db2
-      internalID: -993259036
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: desert-ruins_12
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 130541a4882b4934384fdd1cdac4e7eb
-      internalID: -933490201
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: desert-ruins_13
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 44c04f70aefc9c849909ad0d5e6150fc
-      internalID: 1173415798
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: desert-ruins_14
+      name: TX Tileset Ground_7
       rect:
         serializedVersion: 2
         x: 32
-        y: 80
-        width: 16
-        height: 16
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -425,41 +278,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4dfb255526c18a045979ebd238973478
-      internalID: 519196092
+      spriteID: bb2d638f7244fa2448ff657c020de478
+      internalID: -1398339988
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-ruins_15
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 23ae6aa3aa6234f47b8d5bed45b503ae
-      internalID: 1986745087
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: desert-ruins_16
+      name: TX Tileset Ground_8
       rect:
         serializedVersion: 2
         x: 64
-        y: 80
-        width: 16
-        height: 16
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -467,41 +299,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ba6b10d4f7b6dd4bb9e9e59a860ede6
-      internalID: 887467857
+      spriteID: 672fd5bcf77eb034199bd6af4320f503
+      internalID: -1306893864
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-ruins_17
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ee1e1a0b94644e042a57c943b83b0f8e
-      internalID: 2090641462
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: desert-ruins_18
+      name: TX Tileset Ground_9
       rect:
         serializedVersion: 2
         x: 96
-        y: 80
-        width: 16
-        height: 16
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -509,20 +320,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b17c00e94e209084d82d1d050e937fe1
-      internalID: 652955562
+      spriteID: b866ad41b5a6f914eb1e8eefa18dfe73
+      internalID: -1582667992
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-ruins_19
+      name: TX Tileset Ground_10
       rect:
         serializedVersion: 2
-        x: 112
-        y: 80
-        width: 16
-        height: 16
+        x: 160
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -530,20 +341,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8dd331f7f6426d48a1301513e4e3a63
-      internalID: 1025713528
+      spriteID: 6deec4d90b2b4d344b9f9c1f82953196
+      internalID: 698758546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-ruins_20
+      name: TX Tileset Ground_11
       rect:
         serializedVersion: 2
-        x: 16
-        y: 64
-        width: 16
-        height: 16
+        x: 192
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -551,20 +362,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69ee9db96a21d2f4ab33fd058cf9820c
-      internalID: 1047108402
+      spriteID: 80aedf71a2102444ca989efd755b69f6
+      internalID: 2114603049
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-ruins_21
+      name: TX Tileset Ground_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3221954590be64e4ba5949b383f81b67
+      internalID: 250721537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Ground_13
       rect:
         serializedVersion: 2
         x: 32
-        y: 64
-        width: 16
-        height: 16
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -572,20 +404,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87c39529be30ac24da4df3186e3de516
-      internalID: -908503596
+      spriteID: 2bc72a315b0c06740aa8d0276f5591b9
+      internalID: 266856449
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-ruins_22
+      name: TX Tileset Ground_14
       rect:
         serializedVersion: 2
-        x: 48
-        y: 64
-        width: 16
-        height: 16
+        x: 64
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -593,20 +425,335 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e00c40ec4043d9544a20d75fe57defe2
-      internalID: 963797896
+      spriteID: 6ed75090d3674b44eb73bcd22acdc13f
+      internalID: -1841107305
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-ruins_23
+      name: TX Tileset Ground_15
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a905eff1a65b5c2409cd2227a3f22120
+      internalID: -701626094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Ground_16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 033174e71eaa80344926d51c8c6f1b85
+      internalID: 418008317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Ground_17
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5979ad2d58f9f464183f444cf1717579
+      internalID: -1019611170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Ground_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4ba211f4040d95439b84d7c6e8272d6
+      internalID: 427632995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Ground_19
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6813fe6e3d2e397428eaf5efd5a6370c
+      internalID: -1110208286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Ground_20
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 680ee6eb2bbc1d9488eff8bd7ae8e92a
+      internalID: -43491501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Ground_21
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 438152deaef16cd4cb7fcc934a983dcd
+      internalID: 937639782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Ground_22
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8afc19a16e4a95745ae94ed26e734858
+      internalID: -2028878351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Ground_23
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 855a58b08ca08154aa958d1b783d189c
+      internalID: 786092565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Ground_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3422e3d64f9b9e24a8e1e983264adb52
+      internalID: -1013517509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Ground_25
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fc99b5d3fd603b41b6c99cbd8eeb66c
+      internalID: -852156766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Ground_26
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ff56f913cf0dc348b2bba5ee9729d8b
+      internalID: -828859341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Ground_27
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fda6c4f67662d784f853270ccce91d01
+      internalID: 970683619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Ground_28
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b11e44e6f695bf4429c1289810137463
+      internalID: 179727355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Ground_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 084d4e999fd197643ae13fd84897827e
+      internalID: 1262606538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Ground_30
       rect:
         serializedVersion: 2
         x: 64
         y: 64
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -614,20 +761,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eefdc42b6ac7d44498f8908205f6fec4
-      internalID: -1446045195
+      spriteID: 21e11a580a3d96b4ab0a30686d818460
+      internalID: -1895645490
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-ruins_24
+      name: TX Tileset Ground_31
       rect:
         serializedVersion: 2
-        x: 80
+        x: 160
         y: 64
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -635,20 +782,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3486d04dcc462694db1381f9efbb8b14
-      internalID: 1835532308
+      spriteID: b1517175195f9af40949fc302df49a73
+      internalID: 1728220924
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-ruins_25
+      name: TX Tileset Ground_32
       rect:
         serializedVersion: 2
-        x: 16
-        y: 48
-        width: 16
-        height: 16
+        x: 192
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -656,20 +803,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6b1ec209c94d004fb83815f69b951bd
-      internalID: -50968657
+      spriteID: ccafd9361c386214390282b2d83994a4
+      internalID: -713095825
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-ruins_26
+      name: TX Tileset Ground_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bbb9c36f81c4e64796e333903a14f18
+      internalID: -426292242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Tileset Ground_34
       rect:
         serializedVersion: 2
         x: 32
-        y: 48
-        width: 16
-        height: 16
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -677,41 +845,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1e178e3ae8579842bfeac77a751f230
-      internalID: 1161347165
+      spriteID: 1444af4e2bc027141ab7f2695c9b5949
+      internalID: -1797001233
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: desert-ruins_27
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d41cd3e6bab3146499eb4930af47b6c0
-      internalID: 659808285
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: desert-ruins_28
+      name: TX Tileset Ground_35
       rect:
         serializedVersion: 2
         x: 64
-        y: 48
-        width: 16
-        height: 16
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -719,29 +866,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d59ddef595137943b9907630bcdd3b8
-      internalID: 962324023
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: desert-ruins_29
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6139f88abc1b64a42979c2445b944e2a
-      internalID: -1286183214
+      spriteID: e7fa2dee96f53e6428d2c7ef62ecc3cc
+      internalID: 307414635
       vertices: []
       indices: 
       edges: []
@@ -757,36 +883,42 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      desert-ruins_0: -1113871114
-      desert-ruins_1: -441470171
-      desert-ruins_10: -1794097584
-      desert-ruins_11: -993259036
-      desert-ruins_12: -933490201
-      desert-ruins_13: 1173415798
-      desert-ruins_14: 519196092
-      desert-ruins_15: 1986745087
-      desert-ruins_16: 887467857
-      desert-ruins_17: 2090641462
-      desert-ruins_18: 652955562
-      desert-ruins_19: 1025713528
-      desert-ruins_2: -1588723369
-      desert-ruins_20: 1047108402
-      desert-ruins_21: -908503596
-      desert-ruins_22: 963797896
-      desert-ruins_23: -1446045195
-      desert-ruins_24: 1835532308
-      desert-ruins_25: -50968657
-      desert-ruins_26: 1161347165
-      desert-ruins_27: 659808285
-      desert-ruins_28: 962324023
-      desert-ruins_29: -1286183214
-      desert-ruins_3: -335326175
-      desert-ruins_4: 912443530
-      desert-ruins_5: 1650654782
-      desert-ruins_6: -174061748
-      desert-ruins_7: -1054863406
-      desert-ruins_8: -945449491
-      desert-ruins_9: 1992426347
+      TX Tileset Ground_0: -2123750997
+      TX Tileset Ground_1: 1566605104
+      TX Tileset Ground_10: 698758546
+      TX Tileset Ground_11: 2114603049
+      TX Tileset Ground_12: 250721537
+      TX Tileset Ground_13: 266856449
+      TX Tileset Ground_14: -1841107305
+      TX Tileset Ground_15: -701626094
+      TX Tileset Ground_16: 418008317
+      TX Tileset Ground_17: -1019611170
+      TX Tileset Ground_18: 427632995
+      TX Tileset Ground_19: -1110208286
+      TX Tileset Ground_2: 965767911
+      TX Tileset Ground_20: -43491501
+      TX Tileset Ground_21: 937639782
+      TX Tileset Ground_22: -2028878351
+      TX Tileset Ground_23: 786092565
+      TX Tileset Ground_24: -1013517509
+      TX Tileset Ground_25: -852156766
+      TX Tileset Ground_26: -828859341
+      TX Tileset Ground_27: 970683619
+      TX Tileset Ground_28: 179727355
+      TX Tileset Ground_29: 1262606538
+      TX Tileset Ground_3: 1170529023
+      TX Tileset Ground_30: -1895645490
+      TX Tileset Ground_31: 1728220924
+      TX Tileset Ground_32: -713095825
+      TX Tileset Ground_33: -426292242
+      TX Tileset Ground_34: -1797001233
+      TX Tileset Ground_35: 307414635
+      TX Tileset Ground_4: 625319245
+      TX Tileset Ground_5: 1382808307
+      TX Tileset Ground_6: -141514542
+      TX Tileset Ground_7: -1398339988
+      TX Tileset Ground_8: -1306893864
+      TX Tileset Ground_9: -1582667992
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

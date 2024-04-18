@@ -9,6 +9,12 @@ public class LandState : PlayerGroundState
     {
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+        player.jumpDust.Play();
+    }
+
     public override void LogicUpdate()
     {
         base.LogicUpdate();

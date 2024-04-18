@@ -15,6 +15,8 @@ public class HammerManager : BossManager
     private HammerAttack2State meleeAttack2;
     private HammerAttack2State meleeAttack3;
 
+    [SerializeField] private GameObject wallBattle1, wallBattle2;
+
     public List<Vector3> size;
     public Bullet airAttack;
     
@@ -73,6 +75,11 @@ public class HammerManager : BossManager
         Gizmos.DrawLine(playerCheck.position, playerCheck.position + Vector3.right * facingDirection * data.maxDistanceAttack);
     }
 
-    
-   
+    public override void EnableHeath()
+    {
+        base.EnableHeath();
+        wallBattle1.SetActive(true);
+        wallBattle2.SetActive(true);
+    }
+
 }
