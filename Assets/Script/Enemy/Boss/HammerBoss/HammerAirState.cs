@@ -59,6 +59,10 @@ public class HammerAirState : BossInAirState
         {
             stateMachine.ChangeState(hammer.idle);
         }
+        else if (isWall)
+        {
+            enemy.SetVelocityX(0);
+        }
         else
         {
             hammer.SetVelocityX(direction*data.speed);

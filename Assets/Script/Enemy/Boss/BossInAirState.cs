@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossInAirState : State
 {
     protected bool isGrounded;
+    protected bool isWall;
     public BossInAirState(Enemy enemy, FiniteStateMachine stateMachine, string animBoolName, EnemyData data) : base(enemy, stateMachine, animBoolName, data)
     {
     }
@@ -13,6 +14,7 @@ public class BossInAirState : State
     {
         base.DoChecks();
         isGrounded = enemy.GroundCheckCollision();
+        isWall=enemy.WallCheckCollision();
     }
 
     public override void Enter()

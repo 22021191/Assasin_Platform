@@ -15,6 +15,7 @@ public class EnemyData:ScriptableObject
     public float wallCheckDistance = 0.2f;
     public float groundCheckRadius = 0.3f;
     public LayerMask _GroundMask;
+    public LayerMask _WallMask;
     public LayerMask _PlayerMask;
 
     public float minIdleTime;

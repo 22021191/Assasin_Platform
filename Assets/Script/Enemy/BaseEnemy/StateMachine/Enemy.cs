@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour
 
     public bool WallCheckCollision()
     {
-        return Physics2D.OverlapCircle(wallCheck.transform.position,data.wallCheckDistance,data._GroundMask);
+        return Physics2D.OverlapCircle(wallCheck.transform.position,data.wallCheckDistance,data._WallMask);
         
     }
 
