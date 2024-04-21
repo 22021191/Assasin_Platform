@@ -18,6 +18,15 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private Sprite offSfx,offMusic;
     [SerializeField] private Slider sfxSlider, musicSlider;
 
+    [Header("End Game")]
+    [SerializeField] private GameObject endGamePanpel;
+    [SerializeField] private GameObject loss;
+    [SerializeField] private GameObject Won;
+
+    [Header("Orther")]
+    [SerializeField] private Animator transitionAnim;
+    public bool isTransition=false;
+
     protected override void Awake()
     {
         base.Awake();
@@ -26,22 +35,24 @@ public class UiManager : Singleton<UiManager>
     private void Start()
     {
         PopDownAllPanpel();
+        transitionAnim.gameObject.SetActive(false);
+        mainMenu.SetActive(true);
     }
     #region Main Menu
 
     public void NewGame()
     {
-        SceneManager.LoadScene("Game");
-        PopDownAllPanpel();
-        mainMenu.SetActive(false);
+        StartCoroutine(TransitionScene("Game"));
     }
 
     
 
     public void PopDownAllPanpel()
     {
+        mainMenu.SetActive(false);
         infomationPanpel.SetActive(false);
         settingPanpel.SetActive(false);
+        endGamePanpel.SetActive(false);
     }
 
     public void PopUpSettingPanpel() 
@@ -93,5 +104,70 @@ public class UiManager : Singleton<UiManager>
         AudioManager.Instance.SfxVolume(sfxSlider.value);
     }
 
+    #endregion
+
+    #region EndGame
+    public void GoHome()
+    {
+        GameManager.Instance.player.gameObject.SetActive(false);
+        StartCoroutine(TransitionScene("Menu"));
+    }
+
+    public void EndGame()
+    {
+        PopDownAllPanpel();
+        endGamePanpel.SetActive(true);
+        if (GameManager.Instance.won)
+        {
+            Won.SetActive(true );
+            loss.SetActive(false );
+        }
+        else
+        {
+            loss.SetActive(true);
+            Won.SetActive(false);
+        }
+    }
+
+    #endregion
+
+    #region Orther
+    IEnumerator TransitionScene(string sceneName)
+    {
+        transitionAnim.gameObject.SetActive(true);
+        transitionAnim.SetBool("Start", true);
+        transitionAnim.SetBool("End", false);
+        yield return new WaitForSeconds(1.5f);
+        PopDownAllPanpel();
+        yield return new WaitForSeconds(0.5f);
+        transitionAnim.SetBool("Start", false);
+        transitionAnim.SetBool("End", true);
+        SceneManager.LoadScene(sceneName);
+        yield return new WaitForSeconds(2f);
+        transitionAnim.gameObject.SetActive(false );
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    public IEnumerator Transition(Vector3 pos)
+    {
+        transitionAnim.gameObject.SetActive(true);
+        transitionAnim.SetBool("Start", true);
+        transitionAnim.SetBool("End", false);
+        yield return new WaitForSeconds(1.5f);
+        PopDownAllPanpel();
+        yield return new WaitForSeconds(0.5f);
+        transitionAnim.SetBool("Start", false);
+        transitionAnim.SetBool("End", true);
+        GameManager.Instance.player.gameObject.SetActive(false);
+        GameManager.Instance.player.input.enabled = false;
+        GameManager.Instance.player.gameObject.transform.position= pos;
+        yield return new WaitForSeconds(2f);
+        GameManager.Instance.player.gameObject.SetActive(true);
+        transitionAnim.gameObject.SetActive(false);
+    }
     #endregion
 }

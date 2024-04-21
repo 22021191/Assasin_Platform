@@ -68,10 +68,6 @@ public class Enemy : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(wallCheck.transform.position, data.wallCheckDistance);
         Gizmos.DrawWireSphere(groundCheck.transform.position, data.groundCheckRadius);
-        Gizmos.DrawLine(playerCheck.position, playerCheck.position + Vector3.right * facingDirection * data.attackDistance);
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(playerCheck.position, playerCheck.position + Vector3.right * facingDirection * data.maxLookPlayerDistance);
-
     }
 
     public virtual bool CheckCanAttack()

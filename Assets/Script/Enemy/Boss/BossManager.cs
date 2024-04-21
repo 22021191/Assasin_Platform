@@ -32,7 +32,7 @@ public class BossManager : Enemy
     public override void Update()
     {
         base.Update();
-        LookPlayer();
+        //LookPlayer();
         heathBar.value = reciver.hp;
     }
 
@@ -59,14 +59,10 @@ public class BossManager : Enemy
         return detectedObjects.transform;
     }
 
-    public void CheckFlip(Transform playerPos)
+    public bool CheckFlip(Transform playerPos)
     {
-        if (playerPos == null) return;
-
-        if ((playerPos.transform.position.x - transform.position.x) * facingDirection < 0)
-        {
-            Flip();
-        }
+        if (playerPos == null) return false;
+        return (playerPos.transform.position.x - transform.position.x) * facingDirection < 0;
     }
 
     public void AnimationTrigger()
@@ -79,7 +75,7 @@ public class BossManager : Enemy
         stateMachine.currentState.AnimationFinishTrigger();
     }
 
-    public void SetVelocity(Vector2 direction)
+    public void SetVelocity(Vector3 direction)
     {
         rb2d.velocity = direction*data.force;
     }
@@ -93,5 +89,13 @@ public class BossManager : Enemy
     {
         heathBar.maxValue = data.maxHealth;
         heathBar.minValue = 0;
+    }
+
+    public override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+        Gizmos.DrawLine(playerCheck.position, playerCheck.position + Vector3.right * facingDirection * data.attackDistance);
+        Gizmos.color = Color.red;
+       
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class KnightJump : State
 {
     private KnightManager manager;
-    private Vector2 direction = new Vector2(1, 1);
+    private Vector3 direction = new Vector3(1, 2,0);
     private bool isGround;
     public KnightJump(KnightManager enemy, FiniteStateMachine stateMachine, string animBoolName, EnemyData data) : base(enemy, stateMachine, animBoolName, data)
     {
@@ -17,6 +17,12 @@ public class KnightJump : State
     {
         base.DoChecks();
         isGround = manager.GroundCheckCollision();
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+        
     }
 
     public override void LogicUpdate()

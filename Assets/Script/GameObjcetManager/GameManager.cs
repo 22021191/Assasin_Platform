@@ -2,17 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] public Player player;
+    [SerializeField] private Transform pos;
+    public bool won;
+    protected override void Awake()
+    {
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        player.gameObject.SetActive(false);
+    }
+
+    private void Update()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ResetData()
     {
-        
+        player.hp.hp = player.hp.hpMax;
+        player.hp.def = player.hp.defence;
+        player.transform.position=pos.position;
+    }
+
+    public void Restart()
+    {
+        StartCoroutine(UiManager.Instance.Transition(pos.position));
+        ResetData();  
     }
 }

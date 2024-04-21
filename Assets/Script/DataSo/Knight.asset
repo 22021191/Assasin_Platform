@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd346f229961ac64aa97ca71aa976090, type: 3}
+  m_Name: Knight
+  m_EditorClassIdentifier: 
+  maxHealth: 30
+  damageHopSpeed: 3
+  damgeAttack: 0
+  attackDistance: 2.39
+  wallCheckDistance: 0.4
+  groundCheckRadius: 0.2
+  _GroundMask:
+    serializedVersion: 2
+    m_Bits: 8
+  _WallMask:
+    serializedVersion: 2
+    m_Bits: 1032
+  _PlayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  minIdleTime: 0.5
+  maxIdleTime: 1
+  speed: 10
+  maxLookPlayerDistance: 8.65
+  maxDistanceAttack: 5
+  coolDownTime: 0
+  force: 8

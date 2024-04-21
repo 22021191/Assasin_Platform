@@ -1,38 +1,78 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float sizeTrap;
-    [SerializeField] private LayerMask playerMask;
-    [SerializeField] private float coolDownTimer;
-    [SerializeField] private int damge;
+    [SerializeField] private BulletData data;
+    [SerializeField] private Animator anim;
     private float startTime;
     private DamgeSender sender;
-    private void DisableObj()
+    private bool isExplosion;
+
+    Rigidbody2D rb;
+
+    public void Start()
     {
-        gameObject.SetActive(false);
+        anim=GetComponent<Animator>();
+        sender = new DamgeSender(data.damge);
+        rb=GetComponent<Rigidbody2D>();
+        StartCoroutine(ExecuteAfterDelay(2));
     }
-    private void Start()
+
+    public void Update()
     {
-        sender=new DamgeSender(damge);
-    }
-    private void Update()
-    {
-        TakeDamage();   
-    }
-    private void TakeDamage()
-    {
-        Collider2D hit = Physics2D.OverlapCircle(transform.position,sizeTrap, playerMask);
-        if (hit && Time.time >= startTime + coolDownTimer)
+        TakeDamgePlayer();
+        int x = transform.rotation.y == 0 ? 1 : -1;
+        if(isExplosion)
         {
-            ResetTime();
+            rb.velocity = Vector2.zero;
+        }
+        else
+        {
+            rb.velocity=new Vector2 (x,0)*data.speed;
+        }
+        if (GroundCheck())
+        {
+            isExplosion = true;
+            anim.SetBool("Destroy", true);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, data.size);
+    }
+
+    private bool GroundCheck()
+    {
+        return Physics2D.OverlapCircle(transform.position, data.size, data.groundMask);
+    }
+
+    private void TakeDamgePlayer()
+    {
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, data.size, data.playerMask);
+        if (hit)
+        {
             sender.Send(hit.transform);
+            anim.SetBool("Destroy", true);
+            isExplosion=true;
         }
     }
     public void ResetTime()
     {
-        startTime=Time.time;
+        startTime = Time.time;
+    }
+    IEnumerator ExecuteAfterDelay(float delayInSeconds)
+    {
+        yield return new WaitForSeconds(delayInSeconds);
+        anim.SetBool("Destroy", true);
+        isExplosion = true;
+    }
+    public void OnDestroyBullet()
+    {
+        Destroy(gameObject);
     }
 }

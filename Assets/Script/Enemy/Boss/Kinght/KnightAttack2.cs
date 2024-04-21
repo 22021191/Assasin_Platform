@@ -16,7 +16,14 @@ public class KnightAttack2 : KnightAttackBase
         if (isAttack)
         {
             TakeDamage();
-            manager.SetVelocityX(data.speed * 2);
+            if (manager.WallCheckCollision())
+            {
+                manager.SetVelocityX(0);
+            }
+            else
+            {
+                manager.SetVelocityX(data.speed * 2 * manager.facingDirection);
+            }
         }
     }
 

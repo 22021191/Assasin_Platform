@@ -32,7 +32,7 @@ public class HammerMoveState : EnemyMoveState
     {
         base.LogicUpdate();
 
-        hammer.CheckFlip(hammer.LookPlayer());
+        //hammer.CheckFlip(hammer.LookPlayer());
         if (canAttack )
         {
             stateMachine.ChangeState(hammer.RandomAttack(hammer.closeAttack));

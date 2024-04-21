@@ -22,7 +22,6 @@ public class KnightMove : EnemyMoveState
     {
         base.LogicUpdate();
 
-        manager.CheckFlip(manager.LookPlayer());
         if (canAttack)
         {
             stateMachine.ChangeState(manager.RandomAttack(manager.closeAttack));
@@ -31,7 +30,7 @@ public class KnightMove : EnemyMoveState
         {
             stateMachine.ChangeState(manager.RandomAttack(manager.openAttack));
         }
-        else if (isTouchWall || !isTouchGround)
+        else if (isTouchWall || !isTouchGround||manager.CheckFlip(manager.LookPlayer()))
         {
             manager.idle.SetFlipAfterIdle(true);
             stateMachine.ChangeState(manager.idle);

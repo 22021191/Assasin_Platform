@@ -18,7 +18,7 @@ public class HammerManager : BossManager
     [SerializeField] private GameObject wallBattle1, wallBattle2;
 
     public List<Vector3> size;
-    public Bullet airAttack;
+    public Explosion airAttack;
     
     public override void Awake()
     {

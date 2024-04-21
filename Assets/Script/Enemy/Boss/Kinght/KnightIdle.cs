@@ -31,14 +31,13 @@ public class KnightIdle :EnemyIdleState
 
         int tmp = Random.RandomRange(0, 10);
         canJump = tmp > 5;
-        canHeath = tmp > 7;
+        canHeath = tmp > 8;
+        _ExitState = false;
     }
 
     public override void Exit()
     {
         base.Exit();
-        SetFlipAfterIdle(false);
-        _ExitState = true;
 
     }
 

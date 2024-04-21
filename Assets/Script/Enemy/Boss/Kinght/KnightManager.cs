@@ -50,4 +50,12 @@ public class KnightManager : BossManager
     {
         GameObject bulletPrefab = Instantiate(bullet, pointShoot.position, pointShoot.rotation);
     }
+
+    public override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+        Gizmos.DrawWireSphere(transform.position, data.maxLookPlayerDistance);
+        Gizmos.color= Color.yellow;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.right * facingDirection * data.maxDistanceAttack);
+    }
 }
