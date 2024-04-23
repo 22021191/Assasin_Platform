@@ -5,9 +5,11 @@ using UnityEngine;
 public class FlyIdleState : EnemyIdleState
 {
     private FlyEnemy fly;
+   
     public FlyIdleState(FlyEnemy enemy, FiniteStateMachine stateMachine, string animBoolName, EnemyData data) : base(enemy, stateMachine, animBoolName, data)
     {
         this.fly = enemy;
+       
     }
 
     public override void AnimationFinishTrigger()
@@ -37,7 +39,15 @@ public class FlyIdleState : EnemyIdleState
         base.LogicUpdate();
         if (_ExitState)
         {
-            stateMachine.ChangeState(fly.attack);
+            if (fly.LookPlayer())
+            {
+                fly.RotationPlayer(fly.LookPlayer());
+                stateMachine.ChangeState(fly.attack);
+            }
+            else
+            {
+                stateMachine.ChangeState(fly.move);
+            }
         }
     }
 

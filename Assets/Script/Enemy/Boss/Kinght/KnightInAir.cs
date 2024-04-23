@@ -23,7 +23,7 @@ public class KnightInAir : BossInAirState
         base.Enter();
         direction = manager.facingDirection;
         manager.rb2d.gravityScale = 2;
-        manager.anim.SetFloat("VelocityY", 0);
+        manager.anim.SetFloat("VelocityY", 1);
 
     }
 
@@ -41,16 +41,16 @@ public class KnightInAir : BossInAirState
         {
             stateMachine.ChangeState(manager.jumpAttack);
         }
-        else if (isWall)
+        if (isWall)
         {
-            enemy.SetVelocityX(0);
+            manager.rb2d.velocity = new Vector2(0, manager.rb2d.velocity.y);
         }
         else
         {
             manager.SetVelocityX(direction * data.speed);
-            if (manager.rb2d.velocity.y < 0)
+            if (manager.rb2d.velocity.y <= 0)
             {
-                manager.anim.SetFloat("VelocityY", 1);
+                manager.anim.SetFloat("VelocityY", 2);
                 manager.rb2d.gravityScale = 7;
             }
 

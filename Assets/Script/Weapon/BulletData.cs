@@ -12,4 +12,6 @@ public class BulletData : ScriptableObject
     public float coolDownTimer;
     public LayerMask groundMask;
     public LayerMask playerMask;
+    public Vector2 sizeAttack;
+
 }

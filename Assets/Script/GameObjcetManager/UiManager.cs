@@ -58,12 +58,14 @@ public class UiManager : Singleton<UiManager>
     public void PopUpSettingPanpel() 
     {
         PopDownAllPanpel();
+        mainMenu.SetActive(true) ;
         settingPanpel.SetActive(true);
     }
 
     public void PopUpInfomationPanpel()
     {
         PopDownAllPanpel();
+        mainMenu.SetActive(true) ;
         infomationPanpel.SetActive(true);
     }
     #endregion
@@ -109,7 +111,7 @@ public class UiManager : Singleton<UiManager>
     #region EndGame
     public void GoHome()
     {
-        GameManager.Instance.player.gameObject.SetActive(false);
+        //GameManager.Instance.player.gameObject.SetActive(false);
         StartCoroutine(TransitionScene("Menu"));
     }
 
@@ -154,7 +156,9 @@ public class UiManager : Singleton<UiManager>
 
     public IEnumerator Transition(Vector3 pos)
     {
-        transitionAnim.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+
+        /*transitionAnim.gameObject.SetActive(true);
         transitionAnim.SetBool("Start", true);
         transitionAnim.SetBool("End", false);
         yield return new WaitForSeconds(1.5f);
@@ -167,7 +171,7 @@ public class UiManager : Singleton<UiManager>
         GameManager.Instance.player.gameObject.transform.position= pos;
         yield return new WaitForSeconds(2f);
         GameManager.Instance.player.gameObject.SetActive(true);
-        transitionAnim.gameObject.SetActive(false);
+        transitionAnim.gameObject.SetActive(false);*/
     }
     #endregion
 }

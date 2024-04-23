@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
         {
             die = true;
             stateMachine.ChangeState(death);
-            return;
+            
         }
     }
 
@@ -108,6 +108,6 @@ public class Enemy : MonoBehaviour
 
     public void DestroyGameObject()
     {
-        Destroy(gameObject,2);
+        Destroy(transform.parent.gameObject,2);
     }
 }

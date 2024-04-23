@@ -14,6 +14,7 @@ public class SpikeTrap : MonoBehaviour
     void Start()
     {
         sender = new DamgeSender(damge);
+        takeDamagePoint = transform;
         startTime = Time.time;
     }
 

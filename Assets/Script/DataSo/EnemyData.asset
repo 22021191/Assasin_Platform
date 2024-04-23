@@ -15,17 +15,22 @@ MonoBehaviour:
   maxHealth: 30
   damageHopSpeed: 3
   damgeAttack: 0
-  attackDistance: 1
-  wallCheckDistance: 0.6
-  groundCheckRadius: 0.3
+  attackDistance: 0.5
+  wallCheckDistance: 0
+  groundCheckRadius: 0
   _GroundMask:
     serializedVersion: 2
     m_Bits: 8
+  _WallMask:
+    serializedVersion: 2
+    m_Bits: 1024
   _PlayerMask:
     serializedVersion: 2
     m_Bits: 128
-  minIdleTime: 1
-  maxIdleTime: 1.2
+  minIdleTime: 10
+  maxIdleTime: 12
   speed: 4
-  maxLookPlayerDistance: 1
-  maxDistanceAttack: 0
+  maxLookPlayerDistance: 8
+  maxDistanceAttack: 2
+  coolDownTime: 0
+  force: 8

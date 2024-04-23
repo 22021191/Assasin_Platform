@@ -15,16 +15,17 @@ public class Bullet : MonoBehaviour
 
     public void Start()
     {
-        anim=GetComponent<Animator>();
+        anim =GetComponent<Animator>();
         sender = new DamgeSender(data.damge);
         rb=GetComponent<Rigidbody2D>();
         StartCoroutine(ExecuteAfterDelay(2));
+        Debug.Log(Vector2.right);
     }
 
     public void Update()
     {
         TakeDamgePlayer();
-        int x = transform.rotation.y == 0 ? 1 : -1;
+        int x = transform.rotation.y <= 0 ? -1 : 1;
         if(isExplosion)
         {
             rb.velocity = Vector2.zero;
@@ -54,7 +55,7 @@ public class Bullet : MonoBehaviour
     private void TakeDamgePlayer()
     {
         Collider2D hit = Physics2D.OverlapCircle(transform.position, data.size, data.playerMask);
-        if (hit)
+        if (hit&&!isExplosion)
         {
             sender.Send(hit.transform);
             anim.SetBool("Destroy", true);

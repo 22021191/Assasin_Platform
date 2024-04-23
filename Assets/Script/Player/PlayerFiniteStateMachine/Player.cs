@@ -186,12 +186,12 @@ public class Player : MonoBehaviour
 
     public bool WallFrontCheck()
     {
-        return Physics2D.Raycast(wallCheck.position, Vector2.left, data.wallDistance, data.groundMask);
+        return Physics2D.Raycast(wallCheck.position, Vector2.right*facingRight, data.wallDistance, data.groundMask);
     }
 
     public bool WallCheckBack()
     {
-        return Physics2D.Raycast(wallCheck.position, Vector2.right, data.wallDistance, data.groundMask);
+        return Physics2D.Raycast(wallCheck.position, Vector2.left*facingRight, data.wallDistance, data.groundMask);
     }
     public bool TopCheck()
     {
@@ -253,6 +253,7 @@ public class Player : MonoBehaviour
         Gizmos.DrawLine(groundCheck.position - data._groundRaycastOffset, groundCheck.position - data._groundRaycastOffset + Vector3.down * data.groundRadius);
         //Wall Check
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.right * data.wallDistance);
+        Gizmos.color = Color.red;
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.left * data.wallDistance);
     }
     #endregion

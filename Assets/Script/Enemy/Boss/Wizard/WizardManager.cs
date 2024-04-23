@@ -11,9 +11,10 @@ public class WizardManager : BossManager
 
     public WizardAttack1 attack1;
     public WizardAttack2 attack2;
-    public WizardAttack2 attack3;
+    public WizardAttack3 attack3;
 
-    [SerializeField] private Vector2 size;
+    [SerializeField] private Vector2 limit;
+    [SerializeField] private float size;
     [SerializeField] private List<GameObject> bullets;
     public override void Awake()
     {
@@ -21,11 +22,11 @@ public class WizardManager : BossManager
 
         idle = new WizardIdle(this, stateMachine, "Idle", data);
         move= new WizardMove(this,stateMachine,"Move",data);
-        teleport = new WizardTeleport(this, stateMachine, "Teleport", data,size);
+        teleport = new WizardTeleport(this, stateMachine, "Teleport", data,limit);
         appear = new WizardAppear(this, stateMachine, "Appear", data);
         attack1 = new WizardAttack1(this, stateMachine, "Attack1", data, attackPos[0], size);
         attack2 = new WizardAttack2(this, stateMachine, "Attack2",data, attackPos[1], bullets[0]);
-        attack3 = new WizardAttack2(this, stateMachine, "Attack3", data, attackPos[2], bullets[1]);
+        attack3 = new WizardAttack3(this, stateMachine, "Attack3", data, attackPos[2], bullets[1]);
 
         openAttack = new List<EnemyAttackState>();
 
@@ -49,6 +50,8 @@ public class WizardManager : BossManager
     {
         base.OnDrawGizmos();
         Gizmos.DrawWireSphere(playerCheck.position, data.maxLookPlayerDistance);
+        Gizmos.DrawWireSphere(attackPos[0].transform.position, size);
+
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(playerCheck.position, playerCheck.position + Vector3.right * facingDirection * data.maxDistanceAttack);
     }

@@ -25,5 +25,6 @@ public class KnightAttack3 : KnightAttackBase
             manager.sender.Send(hit.transform);
         }
         manager.Shoot(attackPosition);
+        isAttack = false;
     }
 }

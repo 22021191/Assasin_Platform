@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] protected WeaponData weaponData;
-    [SerializeField] protected Animator effect;
+    [SerializeField] protected GameObject effect;
     [SerializeField] private LayerMask Enemy;
     [SerializeField] private DamgeSender Damge;
     public string weaponType;
@@ -13,6 +13,7 @@ public class Weapon : MonoBehaviour
     public void Start()
     {
         Damge =new DamgeSender(weaponData.amountOfAttacks);
+        effect.SetActive(false);
     }
 
     public void EnterWeapon()
@@ -24,7 +25,7 @@ public class Weapon : MonoBehaviour
     public void ExitWeapon()
     {
         this.gameObject.SetActive(false);
-        //effect.SetBool("Attack", false);
+        effect.SetActive(false);
     }
 
     void OnDrawGizmosSelected()
@@ -42,6 +43,7 @@ public class Weapon : MonoBehaviour
         foreach (Collider2D enemy in enemys)
         {
             Damge.Send(enemy.transform);
+            effect.SetActive(true);
         }
     }
 }

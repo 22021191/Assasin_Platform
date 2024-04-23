@@ -16,13 +16,13 @@ public class HammerManager : BossManager
     private HammerAttack2State meleeAttack3;
 
     [SerializeField] private GameObject wallBattle1, wallBattle2;
-
     public List<Vector3> size;
     public Explosion airAttack;
     
     public override void Awake()
     {
         base.Awake();
+        
         idle = new HammerIdleState(this, stateMachine, "Idle", data);
         move = new HammerMoveState(this, stateMachine,"Move",data);
         jump = new HammerJumpState(this, stateMachine, "Jump", data);
@@ -60,7 +60,6 @@ public class HammerManager : BossManager
     public override void Update()
     {
         base.Update();
-       
     }
 
     public override void OnDrawGizmos()

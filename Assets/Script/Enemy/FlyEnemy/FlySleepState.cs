@@ -36,9 +36,10 @@ public class FlySleepState : State
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if (isLook)
+        if (fly.LookPlayer())
         {
-            stateMachine.ChangeState(fly.chase);
+            fly.RotationPlayer(fly.LookPlayer());
+            stateMachine.ChangeState(fly.attack);
         }
     }
 

@@ -40,7 +40,7 @@ public class HammerMoveState : EnemyMoveState
         {
             stateMachine.ChangeState(hammer.RandomAttack(hammer.openAttack));
         }
-        else if (isTouchWall || !isTouchGround)
+        else if (isTouchWall || !isTouchGround||hammer.CheckFlip(hammer.LookPlayer()))
         {
             hammer.idle.SetFlipAfterIdle(true);
             stateMachine.ChangeState(hammer.idle);

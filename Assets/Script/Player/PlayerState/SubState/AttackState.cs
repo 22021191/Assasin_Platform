@@ -36,7 +36,7 @@ public class AttackState : PlayerAbilityState
         }
         if (!exitState)
         {
-            player.SetVelocityX(1 * player.facingRight);
+            player.SetVelocityX(0.25f * player.facingRight);
 
         }
 

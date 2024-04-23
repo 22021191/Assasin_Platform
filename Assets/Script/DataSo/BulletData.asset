@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BulletData
   m_EditorClassIdentifier: 
   damge: 0
-  speed: 3
-  size: 1
+  speed: 8
+  size: 0.46
   coolDownTimer: 0
   groundMask:
     serializedVersion: 2
@@ -22,3 +22,4 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 128
+  sizeAttack: {x: 0, y: 0}

@@ -914,7 +914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &527957779
 Transform:
   m_ObjectHideFlags: 0
@@ -942,8 +942,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23349574b7a912f43b66f919558909d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   pos: {fileID: 0}
+  won: 0
 --- !u!1 &557455621
 GameObject:
   m_ObjectHideFlags: 0
@@ -3620,6 +3620,9 @@ MonoBehaviour:
   offMusic: {fileID: 1062661722, guid: cbadd1b62f1c94241ab92a05ba7a9880, type: 3}
   sfxSlider: {fileID: 624564457}
   musicSlider: {fileID: 1590035934}
+  endGamePanpel: {fileID: 1815566108}
+  loss: {fileID: 587658892}
+  Won: {fileID: 1426335427}
   transitionAnim: {fileID: 1524419581}
   isTransition: 0
 --- !u!1 &1815566108

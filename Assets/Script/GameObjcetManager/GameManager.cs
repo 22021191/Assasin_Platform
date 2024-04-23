@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] public Player player;
+    //[SerializeField] public Player player;
     [SerializeField] private Transform pos;
     public bool won;
     protected override void Awake()
@@ -15,7 +15,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        player.gameObject.SetActive(false);
+        //player.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -25,10 +25,10 @@ public class GameManager : Singleton<GameManager>
 
     private void ResetData()
     {
-        player.hp.hp = player.hp.hpMax;
+     /*   player.hp.hp = player.hp.hpMax;
         player.hp.def = player.hp.defence;
         player.transform.position=pos.position;
-    }
+    */}
 
     public void Restart()
     {
