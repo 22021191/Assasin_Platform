@@ -12,12 +12,14 @@ public class CrouchIdle : PlayerGroundState
     {
         base.Enter();
         player.SetColliderHeight(data.crouchColliderHeight);
+        player.collectItem=true;
     }
 
     public override void Exit()
     {
         base.Exit();
         player.SetColliderHeight(data.standColliderHeight);
+        player.collectItem=false;
     }
 
     public override void LogicUpdate()

@@ -17,6 +17,8 @@ public class Attack1 : PlayerAbilityState
         base.Enter();
         weapon = player.weapon;
         weapon.EnterWeapon();
+        AudioManager.Instance.PlaySfx("Sword");
+
         _OnGround = player.GroundCheck();
     }
 
@@ -29,9 +31,9 @@ public class Attack1 : PlayerAbilityState
 
     public override void LogicUpdate()
     {
-       
         base.LogicUpdate();
         
+
     }
 
     public override void AnimationFinishTrigger()

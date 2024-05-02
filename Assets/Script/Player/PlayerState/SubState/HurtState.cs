@@ -15,6 +15,7 @@ public class HurtState : PlayerAbilityState
     public override void Enter()
     {
         base.Enter();
+        AudioManager.Instance.PlaySfx("Hurt");
     }
 
     public override void Exit()

@@ -57,5 +57,9 @@ public class KnightManager : BossManager
         Gizmos.DrawWireSphere(transform.position, data.maxLookPlayerDistance);
         Gizmos.color= Color.yellow;
         Gizmos.DrawLine(transform.position, transform.position + Vector3.right * facingDirection * data.maxDistanceAttack);
+        for (int i = 0; i < size.Count; i++)
+        {
+            Gizmos.DrawWireCube(attackPos[i].position, size[i]);
+        }
     }
 }

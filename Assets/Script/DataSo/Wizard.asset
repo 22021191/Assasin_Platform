@@ -27,8 +27,8 @@ MonoBehaviour:
   _PlayerMask:
     serializedVersion: 2
     m_Bits: 128
-  minIdleTime: 0.5
-  maxIdleTime: 1
+  minIdleTime: 0.4
+  maxIdleTime: 0.8
   speed: 4
   maxLookPlayerDistance: 6
   maxDistanceAttack: 6

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -24,17 +25,21 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private GameObject Won;
 
     [Header("Orther")]
-    [SerializeField] private Animator transitionAnim;
+    [SerializeField] public Animator transitionAnim;
+    [SerializeField] private PlayableDirector playable;
     public bool isTransition=false;
 
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(gameObject);
+        playable.Stop();
     }
     private void Start()
     {
         PopDownAllPanpel();
+        /*transitionAnim.SetBool("Start", false);
+        transitionAnim.SetBool("End", true);*/
         transitionAnim.gameObject.SetActive(false);
         mainMenu.SetActive(true);
     }
@@ -43,6 +48,7 @@ public class UiManager : Singleton<UiManager>
     public void NewGame()
     {
         StartCoroutine(TransitionScene("Game"));
+        
     }
 
     
@@ -141,10 +147,12 @@ public class UiManager : Singleton<UiManager>
         transitionAnim.SetBool("End", false);
         yield return new WaitForSeconds(1.5f);
         PopDownAllPanpel();
-        yield return new WaitForSeconds(0.5f);
+        playable.Play();
+        yield return new WaitForSeconds(15);
         transitionAnim.SetBool("Start", false);
         transitionAnim.SetBool("End", true);
         SceneManager.LoadScene(sceneName);
+        AudioManager.Instance.PlayMusic("Theme"+sceneName);
         yield return new WaitForSeconds(2f);
         transitionAnim.gameObject.SetActive(false );
     }
@@ -158,7 +166,7 @@ public class UiManager : Singleton<UiManager>
     {
         yield return new WaitForSeconds(0.5f);
 
-        /*transitionAnim.gameObject.SetActive(true);
+        transitionAnim.gameObject.SetActive(true);
         transitionAnim.SetBool("Start", true);
         transitionAnim.SetBool("End", false);
         yield return new WaitForSeconds(1.5f);
@@ -166,12 +174,12 @@ public class UiManager : Singleton<UiManager>
         yield return new WaitForSeconds(0.5f);
         transitionAnim.SetBool("Start", false);
         transitionAnim.SetBool("End", true);
-        GameManager.Instance.player.gameObject.SetActive(false);
+       /* GameManager.Instance.player.gameObject.SetActive(false);
         GameManager.Instance.player.input.enabled = false;
-        GameManager.Instance.player.gameObject.transform.position= pos;
+        GameManager.Instance.player.gameObject.transform.position = pos;*/
         yield return new WaitForSeconds(2f);
-        GameManager.Instance.player.gameObject.SetActive(true);
-        transitionAnim.gameObject.SetActive(false);*/
+        //GameManager.Instance.player.gameObject.SetActive(true);
+        transitionAnim.gameObject.SetActive(false);
     }
     #endregion
 }

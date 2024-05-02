@@ -41,9 +41,9 @@ public class KnightInAir : BossInAirState
         {
             stateMachine.ChangeState(manager.jumpAttack);
         }
-        if (isWall)
+        else if (isWall)
         {
-            manager.rb2d.velocity = new Vector2(0, manager.rb2d.velocity.y);
+            manager.SetVelocityX(0);
         }
         else
         {

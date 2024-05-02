@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
         sender = new DamgeSender(data.damge);
         rb=GetComponent<Rigidbody2D>();
         StartCoroutine(ExecuteAfterDelay(2));
-        Debug.Log(Vector2.right);
+        //Debug.Log(Vector2.right);
     }
 
     public void Update()

@@ -32,7 +32,7 @@ public class DashState : PlayerAbilityState
         startTime = Time.time;
         player.CheckFlip(Mathf.RoundToInt(dashDirection.x));
         player.SetVelocity(data.dashSpeed, dashDirection);
-
+        AudioManager.Instance.PlaySfx("Dash");
     }
 
     public override void Exit()

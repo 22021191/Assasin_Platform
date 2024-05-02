@@ -55,4 +55,10 @@ public class WizardManager : BossManager
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(playerCheck.position, playerCheck.position + Vector3.right * facingDirection * data.maxDistanceAttack);
     }
+
+    public override void ResetData()
+    {
+        base.ResetData();
+        stateMachine.ChangeState(idle);
+    }
 }

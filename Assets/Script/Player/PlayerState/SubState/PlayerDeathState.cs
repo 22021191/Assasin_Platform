@@ -10,13 +10,11 @@ public class PlayerDeathState : PlayerState
     public override void AnimationFinishTrigger()
     {
         base.AnimationFinishTrigger();
-        player.DestroyGameObject();
     }
 
     public override void Enter()
     {
-        player._rb2d.gravityScale = 0;
-        player.GetComponent<Collider2D>().enabled = false;
+        player.gameObject.layer = LayerMask.NameToLayer("Dash");
         base.Enter();
     }
 

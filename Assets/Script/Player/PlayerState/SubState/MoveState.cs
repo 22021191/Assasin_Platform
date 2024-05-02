@@ -23,7 +23,6 @@ public class MoveState : PlayerGroundState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
         if (exitState)
         {
             return;

@@ -37,6 +37,7 @@ public class DialogueTrigger : MonoBehaviour
                 gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
                 gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
                 bossManager.enabled = true;
+                GameManager.Instance.curBoss = bossManager;
                 bossManager.EnableHeath();
                 col1.SetActive(true);
                 col2.SetActive(true);

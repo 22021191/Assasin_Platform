@@ -23,6 +23,7 @@ public class JumpState :PlayerAbilityState
         player.SetVelocityY(data.jumpForce);
         player.jumpDust.Play();
         isAbilityDone = true;
+        AudioManager.Instance.PlaySfx("Jump");
     }
 
     public override void Exit()

@@ -81,4 +81,15 @@ public class HammerManager : BossManager
         wallBattle2.SetActive(true);
     }
 
+    public override void ResetData()
+    {
+        base.ResetData();   
+        wallBattle1.SetActive(false);
+        stateMachine.ChangeState(idle);
+        gameObject.GetComponent<DialogueTrigger>().enabled = true;
+        gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+        gameObject.layer = LayerMask.NameToLayer("Npc");
+
+    }
 }

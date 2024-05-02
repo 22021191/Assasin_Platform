@@ -12,6 +12,7 @@ public class PlayerDefence : PlayerGroundState
     {
         base.Enter();
         player.hp.isDefence = true;
+        player.SetVelocityZero();
     }
 
     public override void Exit()

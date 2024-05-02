@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 30
   damageHopSpeed: 3
-  damgeAttack: 0
+  damgeAttack: 3
   attackDistance: 2.39
   wallCheckDistance: 0.4
   groundCheckRadius: 0.2
@@ -28,7 +28,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   minIdleTime: 0.5
-  maxIdleTime: 1
+  maxIdleTime: 0.8
   speed: 10
   maxLookPlayerDistance: 8.65
   maxDistanceAttack: 5

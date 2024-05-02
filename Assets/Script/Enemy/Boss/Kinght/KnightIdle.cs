@@ -30,7 +30,7 @@ public class KnightIdle :EnemyIdleState
         base.Enter();
 
         int tmp = Random.RandomRange(0, 10);
-        canJump = tmp > 7;
+        canJump = tmp > 6;
         canHeath = tmp > 8&&manager.reciver.hp<manager.reciver.hpMax;
         _ExitState = false;
     }
@@ -46,7 +46,7 @@ public class KnightIdle :EnemyIdleState
         base.LogicUpdate();
         if (_ExitState)
         {
-            if (canHeath)
+            if (canHeath&&manager.reciver.hp<manager.reciver.hpMax)
             {
                 stateMachine.ChangeState(manager.heath);
             }

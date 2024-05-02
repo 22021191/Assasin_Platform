@@ -9,7 +9,7 @@ public class DamgeReciver : MonoBehaviour
     [SerializeField] public int defence;
     [SerializeField] public int hp = 1;
     [SerializeField] public int hpMax = 2;
-    [SerializeField] protected bool isDead = false;
+    [SerializeField] public bool isDead = false;
     public bool isDefence=false;
 
     public virtual void Reborn()

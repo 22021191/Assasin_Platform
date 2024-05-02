@@ -1,6 +1,7 @@
 using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class KnightJump : State
@@ -22,6 +23,7 @@ public class KnightJump : State
     public override void Enter()
     {
         base.Enter();
+        
         
     }
 

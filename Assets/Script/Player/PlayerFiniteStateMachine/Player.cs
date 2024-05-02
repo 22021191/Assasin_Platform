@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.PlayerSettings;
 
 public class Player : MonoBehaviour
 {
@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     public Animator anim { get;private set; }
     public Weapon weapon;
     public int curHeath;
+    public bool collectItem;
 
     [SerializeField] private Slider heathBar;
     [SerializeField] private Slider defBar;
@@ -90,6 +91,8 @@ public class Player : MonoBehaviour
         defence = new PlayerDefence(this, stateMachine, data, "Defence");
         transition = new TransitionAttack(this, stateMachine, data, "Trasition");
         hurt = new HurtState(this, stateMachine, data, "Hurt");
+
+        GameManager.Instance.player=this;
     }
 
     void Start()
@@ -139,7 +142,12 @@ public class Player : MonoBehaviour
         curVerlocity= Vector2.zero;
 
     }
-
+    public void NextRoom()
+    {
+        stateMachine.ChangeState(idleState);
+        input.inputX=0;
+        input.inputY=0;
+    }
     public void SetColliderHeight(float height)
     {
         Vector2 center = collider.offset;
@@ -255,6 +263,17 @@ public class Player : MonoBehaviour
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.right * data.wallDistance);
         Gizmos.color = Color.red;
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.left * data.wallDistance);
+    }
+
+    public void ResetData(Transform pos)
+    {
+        hp.hp = hp.hpMax;
+        curHeath = hp.hpMax;
+        hp.isDead = false;
+        hp.def = hp.defence;
+        transform.position = pos.position;
+        stateMachine.ChangeState(idleState);
+        gameObject.layer = LayerMask.NameToLayer("Player");
     }
     #endregion
 }

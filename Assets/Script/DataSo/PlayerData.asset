@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   maxSpeed: 8
-  acceleration: 90
+  acceleration: 180
   deceleration: 180
   _groundLinearDrag: 5
   jumpForce: 24

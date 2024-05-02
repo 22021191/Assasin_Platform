@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    //[SerializeField] public Player player;
-    [SerializeField] private Transform pos;
+    [SerializeField] public Player player;
+    [SerializeField] public Transform pos;
+    [SerializeField] public BossManager curBoss;
+
     public bool won;
     protected override void Awake()
     {
@@ -13,26 +15,31 @@ public class GameManager : Singleton<GameManager>
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Start()
-    {
-        //player.gameObject.SetActive(false);
-    }
+    
 
     private void Update()
     {
-        
+        if(player==null) { return; }
+        if (player.hp.hp == 0)
+        {
+            won = false;
+            UiManager.Instance.EndGame();
+        }
     }
 
     private void ResetData()
     {
-     /*   player.hp.hp = player.hp.hpMax;
-        player.hp.def = player.hp.defence;
-        player.transform.position=pos.position;
-    */}
+        player.ResetData(pos);
+        curBoss.ResetData();
+    }
 
     public void Restart()
     {
         StartCoroutine(UiManager.Instance.Transition(pos.position));
         ResetData();  
+    }
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

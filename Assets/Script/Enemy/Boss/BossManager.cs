@@ -26,7 +26,7 @@ public class BossManager : Enemy
     public override void Start()
     {
         base.Start();
-        heathBar.gameObject.SetActive(false);
+        //heathBar.gameObject.SetActive(false);
     }
 
     public override void Update()
@@ -97,5 +97,11 @@ public class BossManager : Enemy
         Gizmos.DrawLine(playerCheck.position, playerCheck.position + Vector3.right * facingDirection * data.attackDistance);
         Gizmos.color = Color.red;
        
+    }
+
+    public virtual void ResetData()
+    {
+        reciver.Reborn();
+        this.enabled = false;
     }
 }

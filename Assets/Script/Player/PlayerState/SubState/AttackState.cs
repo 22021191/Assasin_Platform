@@ -26,6 +26,7 @@ public class AttackState : PlayerAbilityState
         base.Exit();        
         weapon.ExitWeapon();
         player.input.attackInputStartTime=Time.time;
+        AudioManager.Instance.PlaySfx("Sword");
     }
 
     public override void LogicUpdate()
@@ -34,10 +35,12 @@ public class AttackState : PlayerAbilityState
         {
             stateMachine.ChangeState(player.transition);
         }
-        if (!exitState)
-        {
-            player.SetVelocityX(0.25f * player.facingRight);
+        
+        xInput = player.input.inputX;
 
+        if (xInput != 0)
+        {
+            player.SetVelocityX(xInput * 4);
         }
 
     }
