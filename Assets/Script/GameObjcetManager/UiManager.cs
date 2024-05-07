@@ -29,6 +29,14 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] private PlayableDirector playable;
     public bool isTransition=false;
 
+    [Header("Player Bar")]
+    [SerializeField] GameObject playerBar;
+    public Slider playerHeathBar;
+    public Slider playerDefBar;
+
+    [Header("Boss Bar")]
+    public Slider bossHeathBar;
+    public GameObject bossBar;
     protected override void Awake()
     {
         base.Awake();
@@ -41,6 +49,8 @@ public class UiManager : Singleton<UiManager>
         /*transitionAnim.SetBool("Start", false);
         transitionAnim.SetBool("End", true);*/
         transitionAnim.gameObject.SetActive(false);
+        playerBar.SetActive(false);
+        bossBar.SetActive(false);
         mainMenu.SetActive(true);
     }
     #region Main Menu
@@ -148,11 +158,12 @@ public class UiManager : Singleton<UiManager>
         yield return new WaitForSeconds(1.5f);
         PopDownAllPanpel();
         playable.Play();
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(12);
         transitionAnim.SetBool("Start", false);
         transitionAnim.SetBool("End", true);
         SceneManager.LoadScene(sceneName);
         AudioManager.Instance.PlayMusic("Theme"+sceneName);
+        playerBar.SetActive(true);
         yield return new WaitForSeconds(2f);
         transitionAnim.gameObject.SetActive(false );
     }
@@ -174,11 +185,9 @@ public class UiManager : Singleton<UiManager>
         yield return new WaitForSeconds(0.5f);
         transitionAnim.SetBool("Start", false);
         transitionAnim.SetBool("End", true);
-       /* GameManager.Instance.player.gameObject.SetActive(false);
-        GameManager.Instance.player.input.enabled = false;
-        GameManager.Instance.player.gameObject.transform.position = pos;*/
+        GameManager.Instance.ResetData();
         yield return new WaitForSeconds(2f);
-        //GameManager.Instance.player.gameObject.SetActive(true);
+        
         transitionAnim.gameObject.SetActive(false);
     }
     #endregion

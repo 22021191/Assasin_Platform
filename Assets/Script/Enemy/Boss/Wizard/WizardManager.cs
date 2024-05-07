@@ -61,4 +61,10 @@ public class WizardManager : BossManager
         base.ResetData();
         stateMachine.ChangeState(idle);
     }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        GameManager.Instance.won=true;
+    }
 }

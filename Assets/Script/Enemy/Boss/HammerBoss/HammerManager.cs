@@ -18,6 +18,7 @@ public class HammerManager : BossManager
     [SerializeField] private GameObject wallBattle1, wallBattle2;
     public List<Vector3> size;
     public Explosion airAttack;
+    [SerializeField] private Door door;
     
     public override void Awake()
     {
@@ -91,5 +92,11 @@ public class HammerManager : BossManager
         gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
         gameObject.layer = LayerMask.NameToLayer("Npc");
 
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        door.gameObject.SetActive(true);
     }
 }

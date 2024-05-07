@@ -25,7 +25,7 @@ public class Door : MonoBehaviour
         {
             collision.GetComponent<Player>().NextRoom();
             GameManager.Instance.curBoss = boss;
-            GameManager.Instance.pos=transform;
+            GameManager.Instance.pos=transform.position;
             if (!isTransition)
             {
                 StartCoroutine(TransitionScene(collision));

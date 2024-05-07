@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.PlayerSettings;
 
 public class Player : MonoBehaviour
 {
@@ -37,8 +36,8 @@ public class Player : MonoBehaviour
     public int curHeath;
     public bool collectItem;
 
-    [SerializeField] private Slider heathBar;
-    [SerializeField] private Slider defBar;
+    private Slider heathBar;
+    private Slider defBar;
     #endregion
 
     #region State Value
@@ -93,6 +92,8 @@ public class Player : MonoBehaviour
         hurt = new HurtState(this, stateMachine, data, "Hurt");
 
         GameManager.Instance.player=this;
+        heathBar = UiManager.Instance.playerHeathBar;
+        defBar=UiManager.Instance.playerDefBar;
     }
 
     void Start()
@@ -265,13 +266,13 @@ public class Player : MonoBehaviour
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + Vector3.left * data.wallDistance);
     }
 
-    public void ResetData(Transform pos)
+    public void ResetData(Vector3 pos)
     {
         hp.hp = hp.hpMax;
         curHeath = hp.hpMax;
         hp.isDead = false;
         hp.def = hp.defence;
-        transform.position = pos.position;
+        transform.position = pos;
         stateMachine.ChangeState(idleState);
         gameObject.layer = LayerMask.NameToLayer("Player");
     }

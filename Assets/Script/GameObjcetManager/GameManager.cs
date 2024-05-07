@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] public Player player;
-    [SerializeField] public Transform pos;
+    [SerializeField] public Vector3 pos;
     [SerializeField] public BossManager curBoss;
 
     public bool won;
@@ -20,14 +21,13 @@ public class GameManager : Singleton<GameManager>
     private void Update()
     {
         if(player==null) { return; }
-        if (player.hp.hp == 0)
+        if (player.hp.hp == 0||won)
         {
-            won = false;
             UiManager.Instance.EndGame();
         }
     }
 
-    private void ResetData()
+    public void ResetData()
     {
         player.ResetData(pos);
         curBoss.ResetData();
@@ -35,7 +35,7 @@ public class GameManager : Singleton<GameManager>
 
     public void Restart()
     {
-        StartCoroutine(UiManager.Instance.Transition(pos.position));
+        StartCoroutine(UiManager.Instance.Transition(pos));
         ResetData();  
     }
     public void ExitGame()

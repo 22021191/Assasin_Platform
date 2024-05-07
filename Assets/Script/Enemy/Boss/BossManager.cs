@@ -9,12 +9,14 @@ public class BossManager : Enemy
     public List<EnemyAttackState> closeAttack;
     public List<EnemyAttackState> openAttack;
 
-    [SerializeField] private Slider heathBar;
+    private Slider heathBar;
 
    
     public override void Awake()
     {
         base.Awake();
+        heathBar=UiManager.Instance.bossHeathBar;
+        
         SetHeathBar();
     }
 
@@ -103,5 +105,19 @@ public class BossManager : Enemy
     {
         reciver.Reborn();
         this.enabled = false;
+    }
+
+    protected virtual void OnDestroy()
+    {
+        UiManager.Instance.bossBar.SetActive(false);
+    }
+    private void OnEnable()
+    {
+        UiManager.Instance.bossBar.SetActive(true);
+
+    }
+    private void OnDisable()
+    {
+        UiManager.Instance.bossBar.SetActive(false );
     }
 }

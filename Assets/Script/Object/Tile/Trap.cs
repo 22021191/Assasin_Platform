@@ -1,15 +1,15 @@
 using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
-    [SerializeField] private Vector2 size;
-    [SerializeField] private float coolDown;
-    [SerializeField] private LayerMask player;
+    [SerializeField] private float coolDown=0.1f;
+   
     [SerializeField] private int damge;
-    private bool isTakeDamge;
+    [SerializeField] private bool isTakeDamge;
     private DamgeSender sender;
     private float endTime = 0;
 
@@ -24,26 +24,31 @@ public class Trap : MonoBehaviour
 
     private void Start()
     {
+        endTime = 0;
         sender = new DamgeSender(damge);
     }
 
     private void Update()
     {
-        if (!isTakeDamge) { return; }
-        if (endTime + coolDown < Time.time)
+        if (isTakeDamge)
         {
-            TakeDamge();
+            gameObject.GetComponent<Collider2D>().enabled = true;
+        }
+        else
+        {
+            gameObject.GetComponent<Collider2D>().enabled=false;
         }
     }
 
-    private void TakeDamge()
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        Collider2D hit = Physics2D.OverlapBox(transform.position, size, 90, player);
-        if (hit)
+        if (Time.time > endTime + coolDown && collision.gameObject.tag == "Player")
         {
             endTime = Time.time;
-            sender.Send(hit.transform);
+            sender.Send(collision.transform);
         }
     }
 
+   
 }
